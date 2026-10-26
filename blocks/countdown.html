@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bitcoin Shipshow — Next Show Countdown (OBS Overlay)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pirata+One&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: transparent !important;
+      font-family: 'Pirata One', serif;
+      color: #F4E8D1;
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lockup {
+      text-align: center;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9), 0 0 24px rgba(0, 0, 0, 0.6);
+    }
+
+    .eyebrow {
+      font-size: 34px;
+      letter-spacing: 0.14em;
+      color: #F4E8D1;
+      line-height: 1;
+    }
+
+    .rule {
+      width: 220px;
+      height: 2px;
+      margin: 14px auto 10px;
+      background: linear-gradient(90deg, transparent, #D9AE3C 20%, #D9AE3C 80%, transparent);
+    }
+
+    .timer {
+      font-size: 220px;
+      line-height: 0.95;
+      color: #D9AE3C;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.02em;
+    }
+
+    .timer.live {
+      font-size: 150px;
+      animation: pulse 1.6s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.55; }
+      100% { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="lockup">
+    <div class="eyebrow" id="eyebrow">NEXT SHIPSHOW</div>
+    <div class="rule"></div>
+    <div class="timer" id="timer">--:--</div>
+  </div>
+
+  <script>
+    /* Same schedule as js/shipshow.js: FIRST TUESDAY monthly, 10:00 America/Los_Angeles.
+       That anchor holds Berlin 19:00 / Roatan 11:00 steady all year. Change in BOTH files. */
+    var TZ = 'America/Los_Angeles', HOUR = 10, MIN = 0, DURATION_MIN = 120,
+        WEEKDAY = 2, ORDINAL = 'first';
+
+    function instant(y, m, d, hh, mm) {
+      var want = Date.UTC(y, m, d, hh, mm), ts = want;
+      for (var i = 0; i < 3; i++) {
+        var f = new Intl.DateTimeFormat('en-GB', {
+          timeZone: TZ, hour12: false, year: 'numeric', month: '2-digit',
+          day: '2-digit', hour: '2-digit', minute: '2-digit'
+        });
+        var p = {};
+        f.formatToParts(new Date(ts)).forEach(function (x) { p[x.type] = x.value; });
+        var asLocal = Date.UTC(+p.year, +p.month - 1, +p.day, +(p.hour % 24), +p.minute);
+        var diff = want - asLocal;
+        if (diff === 0) break;
+        ts += diff;
+      }
+      return ts;
+    }
+
+    function nthWeekdayOfMonth(y, m, wd) {
+      var f = new Date(Date.UTC(y, m, 1));
+      while (f.getUTCDay() !== wd) { f.setUTCDate(f.getUTCDate() + 1); }
+      return f.getUTCDate();
+    }
+
+    function nextEpisode() {
+      var now = Date.now(), probe = new Date();
+      for (var i = 0; i < 3; i++) {
+        var m = probe.getUTCMonth() + i, y = probe.getUTCFullYear();
+        var yy = y + Math.floor(m / 12), mm = ((m % 12) + 12) % 12;
+        var start = instant(yy, mm, nthWeekdayOfMonth(yy, mm, WEEKDAY), HOUR, MIN);
+        if (start + DURATION_MIN * 60000 > now) return start;
+      }
+      return null;
+    }
+
+    var target = nextEpisode();
+    var timerEl = document.getElementById('timer');
+    var eyebrowEl = document.getElementById('eyebrow');
+
+    function pad(n) { return (n < 10 ? '0' : '') + n; }
+
+    function tick() {
+      if (!target) { timerEl.textContent = '--:--'; return; }
+      var left = target - Date.now();
+      if (left <= 0) {
+        eyebrowEl.textContent = 'LIVE ON AIR';
+        timerEl.textContent = '⚓';
+        timerEl.classList.add('live');
+        return;
+      }
+      var totalSec = Math.floor(left / 1000);
+      var mm = Math.floor(totalSec / 60);
+      var ss = totalSec % 60;
+      timerEl.textContent = pad(mm) + ':' + pad(ss);
+    }
+
+    tick();
+    setInterval(tick, 1000);
+  </script>
+</body>
+</html>

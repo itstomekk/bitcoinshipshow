@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bitcoin Shipshow — Vertical Block Crates (OBS Overlay)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: transparent !important;
+      font-family: 'Share Tech Mono', monospace;
+      color: #F4E8D1;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      width: 150px;
+      padding: 0;
+    }
+    .obs-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      height: 100%;
+      overflow-y: auto;
+      scrollbar-width: none;
+      width: 150px;
+    }
+    .obs-container::-webkit-scrollbar { display: none; }
+
+    /* rope between crates */
+    .rope {
+      width: 12px;
+      height: 18px;
+      background: repeating-linear-gradient(135deg, #a06a38 0 3px, #7a4e2d 3px 6px, #b07a45 6px 9px);
+      border-radius: 6px;
+      box-shadow: 0 0 0 1px rgba(0,0,0,0.4), inset 0 0 3px rgba(0,0,0,0.4);
+      flex-shrink: 0;
+    }
+
+    /* shared crate frame (transparent wood frame, hollow center) */
+    .pirate-crate, .empty-crate {
+      position: relative;
+      width: 130px;
+      height: 130px;
+      background: url('/blocks/img/crate-frame.png') center / cover no-repeat;
+      flex-shrink: 0;
+    }
+
+    /* filled interior for the mined (full) crates */
+    .crate-interior {
+      position: absolute;
+      inset: 16px;
+      background:
+        repeating-linear-gradient(0deg, rgba(0,0,0,0.16) 0 1px, transparent 1px 6px),
+        linear-gradient(160deg, #4a2e17 0%, #36200f 50%, #241407 100%);
+      border-radius: 3px;
+      box-shadow: inset 0 3px 8px rgba(0,0,0,0.6);
+      z-index: 1;
+    }
+
+    .block-height {
+      position: relative;
+      font-family: 'Pirata One', serif;
+      font-size: 14px;
+      color: #E8BE55;
+      text-shadow: 1px 2px 3px rgba(0,0,0,0.9);
+      text-align: center;
+      line-height: 1.1;
+      z-index: 2;
+      overflow: hidden;
+      white-space: nowrap;
+      margin-top: 22px;
+    }
+
+    .latest-badge {
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      background: #8b0000;
+      color: #fff;
+      font-size: 8px;
+      padding: 2px 5px;
+      font-weight: bold;
+      border: 1px solid #ff4500;
+      animation: pulse 1.5s infinite;
+      border-radius: 2px;
+      line-height: 1;
+      z-index: 3;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 1; box-shadow: 0 0 0 #ff4500; }
+      50% { opacity: 0.6; box-shadow: 0 0 8px #ff4500; }
+      100% { opacity: 1; box-shadow: 0 0 0 #ff4500; }
+    }
+
+    .crate-body {
+      position: relative;
+      z-index: 2;
+      font-size: 10px;
+      line-height: 1.3;
+      color: #f0e8d5;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.95);
+      padding: 0 24px;
+      margin-top: 4px;
+    }
+
+    .crate-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 6px;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .crate-row span { color: #e3d3ac; flex-shrink: 0; }
+    .crate-row strong {
+      color: #fff;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .crate-footer {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: center;
+      font-size: 9px;
+      color: #ecdfc0;
+      padding: 0 24px;
+      margin-bottom: 20px;
+      line-height: 1;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.95);
+      overflow: hidden;
+    }
+
+    .pool-name {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 90px;
+    }
+
+    .loading {
+      font-family: 'Pirata One', serif;
+      font-size: 15px;
+      color: #D9AE3C;
+      text-shadow: 1px 1px 2px #000;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="obs-container" id="blocks-container">
+    <div class="loading">Loading Bitcoin crates...</div>
+  </div>
+
+  <script>
+    async function fetchBlocks() {
+      try {
+        const res = await fetch('https://mempool.space/api/v1/blocks');
+        if (!res.ok) throw new Error('Network response was not ok');
+        const blocks = await res.json();
+        renderBlocks(blocks.slice(0, 16));
+      } catch (err) {
+        console.error('Failed to fetch blocks:', err);
+      }
+    }
+
+    function formatBytes(bytes) {
+      return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+    }
+
+    function renderBlocks(blocks) {
+      const container = document.getElementById('blocks-container');
+      container.innerHTML = '';
+
+      // Vertical: top = future (empty frame, mempool), latest at the boundary, bottom = past (full)
+      const futureSlots = 2;
+      const pastSlots = 4; // + latest = 5 real blocks
+
+      // Future (empty) crates at TOP
+      for (let i = 0; i < futureSlots; i++) {
+        container.appendChild(makeRope());
+        container.appendChild(makeEmpty());
+      }
+
+      // Latest block — the boundary between future and past
+      container.appendChild(makeRope());
+      if (blocks.length > 0) {
+        container.appendChild(createCrate(blocks[0], true));
+      }
+
+      // Past blocks below
+      const pastBlocks = blocks.slice(1, 1 + pastSlots);
+      pastBlocks.forEach((block) => {
+        container.appendChild(makeRope());
+        container.appendChild(createCrate(block, false));
+      });
+
+      // Fill remaining past slots with empty crates if short on data
+      for (let i = pastBlocks.length; i < pastSlots; i++) {
+        container.appendChild(makeRope());
+        container.appendChild(makeEmpty());
+      }
+
+      // Auto-fit the block numbers to the crate interior
+      document.querySelectorAll('.block-height').forEach(fitNumber);
+    }
+
+    function fitNumber(el) {
+      var size = 14;
+      el.style.fontSize = size + 'px';
+      while (el.scrollWidth > el.clientWidth && size > 10) {
+        size -= 0.5;
+        el.style.fontSize = size + 'px';
+      }
+    }
+
+    function makeRope() {
+      const rope = document.createElement('div');
+      rope.className = 'rope';
+      return rope;
+    }
+
+    function makeEmpty() {
+      const empty = document.createElement('div');
+      empty.className = 'empty-crate';
+      return empty;
+    }
+
+    function createCrate(block, isLatest) {
+      const crate = document.createElement('div');
+      crate.className = 'pirate-crate';
+
+      const height = block.height.toLocaleString();
+      const txCount = block.tx_count.toLocaleString();
+      const sizeStr = formatBytes(block.size);
+      const feeRate = block.extras && block.extras.medianFee ? Number(block.extras.medianFee).toFixed(2) + ' sat/vB' : '—';
+      const pool = block.extras && block.extras.pool && block.extras.pool.name ? block.extras.pool.name : 'Unknown';
+
+      crate.innerHTML = `
+        <div class="crate-interior"></div>
+        ${isLatest ? '<span class="latest-badge">NEW</span>' : ''}
+        <div class="block-height">${height}</div>
+        <div class="crate-body">
+          <div class="crate-row"><span>TXs:</span> <strong>${txCount}</strong></div>
+          <div class="crate-row"><span>Size:</span> <strong>${sizeStr}</strong></div>
+          <div class="crate-row"><span>Fee:</span> <strong>${feeRate}</strong></div>
+        </div>
+        <div class="crate-footer">
+          <span class="pool-name">⛵ ${pool}</span>
+        </div>
+      `;
+      return crate;
+    }
+
+    fetchBlocks();
+    setInterval(fetchBlocks, 15000);
+  </script>
+</body>
+</html>

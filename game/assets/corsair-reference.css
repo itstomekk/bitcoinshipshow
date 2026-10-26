@@ -1,0 +1,390 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   design: corsair — "Blue Ensign"
+
+   A fork of `pirate`. Identical bones and identical texture recipe — the only
+   thing that changed is the palette: the parchment goes cyanotype blue, the
+   black-teal water goes deep marine, and the "blood" slot becomes a strong
+   signal blue. Gold stays, because without it the whole thing stops reading as
+   pirate and starts reading as a bank.
+
+   Because it is a fork rather than a variant, it will NOT inherit fixes made to
+   pirate.css. If you change one, check the other — `check_contract.py` will not
+   catch a divergence, only a missing hook.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.design-corsair {
+  /* cyanotype paper: blueprint stock, not cream */
+  --co-parch:      #CBDCE8;
+  --co-parch-dk:   #A9C3D6;
+  --co-ink:        #0B1F33;
+
+  /* deep marine water */
+  --co-sea:        #061726;
+  --co-sea-mid:    #0C2E4A;
+  --co-sea-lite:   #14486F;
+
+  --co-gold:       #D9AE3C;
+  --co-blood:      #1E6FA6;   /* the hot-accent slot, blue instead of red */
+
+  --co-rule:       4px solid var(--co-ink);
+  --co-plane:      10px 10px 0 0 var(--co-ink);
+
+  --co-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+
+  /* foxing: the brown blotching old paper gets. Three, off-centre, barely there. */
+  --co-foxing:
+    radial-gradient(ellipse at 12% 18%, rgba(30, 78, 120, .18), transparent 46%),
+    radial-gradient(ellipse at 88% 72%, rgba(30, 78, 120, .15), transparent 42%),
+    radial-gradient(ellipse at 62% 8%,  rgba(20, 55, 90, .12),  transparent 38%);
+
+  background: var(--co-sea);
+  color: var(--co-parch);
+  font-family: "IM Fell English", Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.design-corsair * { border-radius: 0 !important; }
+
+.design-corsair .fx {
+  position: fixed; inset: 0; z-index: 400; pointer-events: none;
+  background-image: var(--co-grain);
+  opacity: .3; mix-blend-mode: multiply;
+}
+
+.design-corsair { scroll-snap-type: y proximity; padding-bottom: 46px; }
+.design-corsair .s {
+  min-height: 100svh; scroll-snap-align: start;
+  display: flex; align-items: center; padding: 56px 26px; position: relative; overflow: hidden;
+}
+.design-corsair .wrap { max-width: 1080px; margin: 0 auto; width: 100%; position: relative; z-index: 3; }
+
+/* ═══════ 1 · hero — black water at night ════════════════════════════════ */
+.design-corsair .s-hero { background: var(--co-sea); }
+
+/* the moon: flat gold disc, low and to the right */
+.design-corsair .s-hero::before {
+  content: ""; position: absolute; z-index: 0;
+  width: 42vmin; height: 42vmin; border-radius: 50% !important;
+  background: var(--co-gold); right: -6vmin; top: 7vmin; opacity: .9;
+}
+/* the water: two flat planes with a hard chop between them */
+.design-corsair .s-hero::after {
+  content: ""; position: absolute; z-index: 1; left: 0; right: 0; bottom: 0; height: 46%;
+  background:
+    linear-gradient(var(--co-sea-lite), var(--co-sea-lite)) 0 100% / 100% 26% no-repeat,
+    linear-gradient(var(--co-sea-mid),  var(--co-sea-mid))  0 100% / 100% 100% no-repeat;
+  clip-path: polygon(
+    0 30%, 11% 21%, 23% 31%, 36% 19%, 48% 30%,
+    61% 20%, 73% 31%, 86% 22%, 100% 30%, 100% 100%, 0 100%);
+}
+
+.design-corsair .brand {
+  position: absolute; z-index: 2; right: -3vw; bottom: -5vmin;
+  width: min(52vmin, 460px); pointer-events: none;
+}
+.design-corsair .brand-mark {
+  width: 100%; height: auto;
+  filter: drop-shadow(0 12px 0 rgba(6, 23, 38, .55)) grayscale(1) sepia(.5) hue-rotate(165deg) saturate(1.6);
+  animation: co-bob 8s ease-in-out infinite;
+}
+@keyframes co-bob {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50%      { transform: translateY(-11px) rotate(2deg); }
+}
+
+.design-corsair .s-hero .wrap > *:not(.brand) { max-width: min(620px, 62%); }
+
+.design-corsair .eyebrow {
+  display: inline-block; background: var(--co-blood); color: var(--co-parch);
+  border: 2px solid var(--co-gold); padding: 6px 14px;
+  font-size: 12px; letter-spacing: .26em; text-transform: uppercase;
+}
+
+.design-corsair .title {
+  font-family: "Pirata One", "IM Fell English", serif; font-weight: 400;
+  font-size: clamp(58px, 13.5vw, 172px); line-height: .84; letter-spacing: .01em; margin: 18px 0 0;
+}
+.design-corsair .title-a { display: block; color: var(--co-parch); text-shadow: 5px 5px 0 var(--co-blood); }
+.design-corsair .title-b { display: block; color: var(--co-gold); margin-left: .04em; text-shadow: -4px 5px 0 var(--co-ink); }
+
+.design-corsair .lede { margin-top: 22px; font-size: clamp(17px, 2.2vw, 22px); line-height: 1.4; }
+.design-corsair .mark {
+  background: var(--co-gold); color: var(--co-ink); padding: 1px 8px; font-style: italic;
+  box-decoration-break: clone; -webkit-box-decoration-break: clone;
+}
+
+/* ── countdown: brass ship's clock ────────────────────────────────────────── */
+.design-corsair .countdown { display: block; }
+.design-corsair .cd-eyebrow {
+  margin: 32px 0 10px; font-size: 12.5px; letter-spacing: .3em;
+  text-transform: uppercase; color: var(--co-gold);
+}
+.design-corsair .cd-list { display: flex; gap: 0; flex-wrap: wrap; }
+.design-corsair .cd-unit {
+  background: var(--co-parch); color: var(--co-ink); background-image: var(--co-foxing);
+  border: var(--co-rule); border-color: var(--co-gold); border-right-width: 0;
+  padding: 12px 6px 9px; text-align: center; min-width: 88px; flex: 0 0 auto;
+}
+.design-corsair .cd-unit:last-child { border-right-width: 4px; }
+.design-corsair .cd-unit:nth-child(1) { background: var(--co-ink); color: var(--co-gold); background-image: none; }
+.design-corsair .cd-unit:nth-child(3) { background: var(--co-parch-dk); }
+.design-corsair .cd-num {
+  font-family: "Pirata One", serif; font-size: 42px; line-height: .92; display: block;
+  font-variant-numeric: tabular-nums;
+}
+.design-corsair .cd-lbl { display: block; margin-top: 4px; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; }
+.design-corsair .cd-when { margin-top: 12px; font-size: 14px; font-style: italic; }
+.design-corsair .cd-live {
+  display: inline-block; background: var(--co-blood); color: var(--co-parch);
+  border: var(--co-rule); border-color: var(--co-gold); padding: 12px 22px 9px;
+  font-family: "Pirata One", serif; font-size: 24px; letter-spacing: .04em;
+}
+.design-corsair .hero-guests { margin-top: 22px; display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+.design-corsair .hero-guests-cap { font-size: 11px; letter-spacing: .26em; text-transform: uppercase; color: var(--co-gold); }
+.design-corsair .hero-guests-row { display: flex; align-items: center; gap: 20px; }
+.design-corsair .hero-guests img { height: 26px; width: auto; object-fit: contain; opacity: .92; filter: drop-shadow(0 2px 0 rgba(0,0,0,.45)); transition: opacity .12s, transform .12s; }
+.design-corsair .hero-guests a:hover img { opacity: 1; transform: translateY(-2px); }
+
+/* ── signup: sign the articles ────────────────────────────────────────────── */
+.design-corsair .signup { margin-top: 32px; max-width: 620px; }
+.design-corsair .signup-head {
+  font-family: "Pirata One", serif; line-height: 1.02;
+  font-size: clamp(26px, 4.6vw, 40px); margin-bottom: 14px;
+}
+.design-corsair .signup-head .mark { background: var(--co-blood); color: var(--co-parch); font-style: normal; }
+.design-corsair .signup-row { display: flex; gap: 0; flex-wrap: wrap; }
+.design-corsair .signup-input {
+  flex: 1 1 260px; min-width: 0; padding: 15px 18px; font-size: 17px;
+  background: var(--co-parch); color: var(--co-ink); background-image: var(--co-foxing);
+  border: var(--co-rule); border-color: var(--co-gold); border-right-width: 0;
+}
+.design-corsair .signup-input::placeholder { color: #6b8299; font-style: italic; }
+.design-corsair .signup-input:focus { outline: none; background-color: #DCE9F3; }
+.design-corsair .signup-btn {
+  flex: 0 0 auto; padding: 15px 30px;
+  font-family: "Pirata One", serif; font-size: 22px; letter-spacing: .04em;
+  background: var(--co-blood); color: var(--co-parch);
+  border: var(--co-rule); border-color: var(--co-gold);
+  transition: transform .08s steps(2), background .08s;
+}
+.design-corsair .signup-btn:hover { background: var(--co-gold); color: var(--co-ink); transform: translate(-3px, -3px); }
+.design-corsair .signup-btn:active { transform: translate(2px, 2px); }
+.design-corsair .signup-btn[disabled] { opacity: .6; cursor: wait; }
+.design-corsair .signup-note { margin-top: 12px; max-width: 52ch; font-size: 13.5px; line-height: 1.6; font-style: italic; }
+.design-corsair .signup-alt { text-decoration: none; border-bottom: 2px dashed var(--co-gold); font-style: normal; }
+
+.design-corsair .formerror {
+  margin-top: 12px; background: var(--co-blood); color: var(--co-parch);
+  border: 3px solid var(--co-gold); padding: 10px 14px; font-size: 14.5px;
+}
+
+/* ── the confirmation: a signed letter of marque, torn along the bottom ──── */
+.design-corsair .sent {
+  margin-top: 26px; max-width: 620px; position: relative; z-index: 4;
+  background: var(--co-parch); background-image: var(--co-foxing); color: var(--co-ink);
+  border: var(--co-rule); border-color: var(--co-gold);
+  box-shadow: 14px 14px 0 0 var(--co-ink); padding: 26px 26px 30px;
+  clip-path: polygon(0 0, 100% 0, 100% 96%, 92% 99%, 84% 96%, 71% 100%, 58% 96%,
+                     46% 99%, 33% 96%, 21% 100%, 9% 96%, 0 99%);
+}
+.design-corsair .sent-head { font-family: "Pirata One", serif; font-size: clamp(28px, 4.6vw, 40px); line-height: 1; margin-bottom: 8px; }
+.design-corsair .sent-head em { font-style: normal; color: var(--co-blood); }
+.design-corsair .sent-sub { font-size: 16px; }
+.design-corsair .sent-when {
+  background: var(--co-ink); color: var(--co-gold); border: 3px solid var(--co-gold);
+  padding: 10px 13px; margin: 14px 0; font-size: 13.5px; letter-spacing: .1em; text-transform: uppercase;
+}
+.design-corsair .sent-go {
+  display: block; text-align: center; text-decoration: none;
+  font-family: "Pirata One", serif; font-size: 24px; letter-spacing: .03em;
+  padding: 14px 18px; background: var(--co-blood); color: var(--co-parch);
+  border: var(--co-rule); transition: transform .08s steps(2), background .08s;
+}
+.design-corsair .sent-go:hover { background: var(--co-ink); color: var(--co-gold); transform: translate(-3px, -3px); }
+.design-corsair .sent-cals { display: flex; gap: 0; margin-top: 12px; flex-wrap: wrap; }
+.design-corsair .sent-cal {
+  flex: 1 1 150px; text-align: center; text-decoration: none; font-size: 13px;
+  letter-spacing: .06em; text-transform: uppercase;
+  background: var(--co-ink); color: var(--co-parch);
+  border: 3px solid var(--co-ink); border-right-width: 0; padding: 11px;
+}
+.design-corsair .sent-cal:last-child { background: var(--co-sea-mid); border-right-width: 3px; }
+.design-corsair .sent-note { font-size: 12.5px; margin-top: 14px; line-height: 1.6; font-style: italic; }
+
+.design-corsair .scrollcue {
+  position: absolute; left: 26px; bottom: 18px; z-index: 4;
+  font-size: 12px; letter-spacing: .3em; text-transform: uppercase;
+  text-decoration: none; color: var(--co-gold);
+}
+
+/* ═══════ 2 · the show — the ship's manifest, on parchment ═══════════════ */
+.design-corsair .s-show { background: var(--co-parch); background-image: var(--co-foxing); color: var(--co-ink); }
+
+.design-corsair .ticker {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 300;
+  background: var(--co-ink); color: var(--co-gold);
+  border-top: 4px solid var(--co-gold);
+  overflow: hidden; white-space: nowrap; padding: 8px 0 8px 74px;
+  font-family: "Pirata One", serif; font-size: 19px; letter-spacing: .03em;
+}
+.design-corsair .ticker-logo {
+  position: absolute; left: 18px; top: 50%; transform: translateY(-50%);
+  height: 32px; width: auto; z-index: 2;
+}
+.design-corsair .ticker-track { display: inline-block; animation: co-scroll 60s linear infinite; }
+.design-corsair .ticker-item { margin: 0 18px; }
+.design-corsair .ticker-item::after { content: " ✦"; color: var(--co-blood); }
+@keyframes co-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+.design-corsair .h { font-family: "Pirata One", serif; font-weight: 400; font-size: clamp(38px, 6.8vw, 74px); line-height: .96; margin-bottom: 28px; display: block; }
+.design-corsair .h-mark { display: inline-block; background: var(--co-blood); color: var(--co-parch); padding: 4px 18px; box-shadow: 10px 10px 0 0 var(--co-gold); }
+
+.design-corsair .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0; }
+.design-corsair .stat { background: var(--co-parch); color: var(--co-ink); border: var(--co-rule); border-right-width: 0; padding: 22px 18px; }
+.design-corsair .stat:last-child { border-right-width: 4px; }
+.design-corsair .stat:nth-child(2) { background: var(--co-gold); }
+.design-corsair .stat:nth-child(3) { background: var(--co-blood); color: var(--co-parch); }
+.design-corsair .stat-num { font-family: "Pirata One", serif; font-size: 56px; line-height: .88; display: block; }
+.design-corsair .stat-lbl { display: block; margin-top: 8px; font-size: 13.5px; line-height: 1.35; }
+
+.design-corsair .prose { margin-top: 26px; max-width: 62ch; font-size: 17px; }
+
+/* rope: a double rule with a dashed gold line inside it */
+.design-corsair .tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.design-corsair .tag {
+  border: 3px double var(--co-ink); outline: 1px dashed var(--co-gold); outline-offset: -6px;
+  padding: 8px 14px; font-size: 14px; letter-spacing: .04em;
+}
+.design-corsair .tag:nth-child(3n+2) { background: var(--co-ink); color: var(--co-parch); }
+.design-corsair .tag-ico { display: none; }
+
+/* ═══════ 3 · how to get in — below decks ════════════════════════════════ */
+.design-corsair .s-join { background: var(--co-blood); color: var(--co-parch); }
+.design-corsair .s-join::before {
+  content: ""; position: absolute; z-index: 0; left: 0; top: 0; width: 58%; height: 100%;
+  background: var(--co-ink); clip-path: polygon(0 0, 100% 0, 62% 100%, 0 100%); opacity: .93;
+}
+.design-corsair .s-join .h-mark { background: var(--co-gold); color: var(--co-ink); box-shadow: 10px 10px 0 0 var(--co-parch); }
+
+.design-corsair .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0; }
+.design-corsair .step {
+  background: var(--co-parch); background-image: var(--co-foxing); color: var(--co-ink);
+  border: var(--co-rule); border-right-width: 0; padding: 20px 20px 24px;
+}
+.design-corsair .step:last-child { border-right-width: 4px; }
+.design-corsair .step:nth-child(2) { background-color: var(--co-gold); }
+.design-corsair .step-num { font-family: "Pirata One", serif; font-size: 62px; line-height: .84; display: block; color: var(--co-blood); margin-bottom: 8px; }
+.design-corsair .step:nth-child(2) .step-num { color: var(--co-ink); }
+.design-corsair .step-title { font-family: "Pirata One", serif; font-weight: 400; font-size: 24px; margin-bottom: 6px; }
+.design-corsair .step-body { font-size: 15.5px; }
+
+.design-corsair .cta {
+  margin-top: 30px; max-width: 700px; background: var(--co-ink); color: var(--co-parch);
+  border: var(--co-rule); border-color: var(--co-gold); box-shadow: 14px 14px 0 0 var(--co-gold); padding: 26px 28px;
+}
+.design-corsair .cta-title { font-family: "Pirata One", serif; font-size: 30px; line-height: 1; margin-bottom: 10px; color: var(--co-gold); }
+.design-corsair .cta-body { font-size: 16px; }
+.design-corsair .cta a { text-decoration: none; border-bottom: 2px dashed var(--co-gold); }
+
+.design-corsair .pagefoot { margin-top: 28px; font-size: 12.5px; letter-spacing: .18em; text-transform: uppercase; }
+
+@keyframes co-pull { from { opacity: 0; transform: translate(-12px, 18px); } to { opacity: 1; transform: none; } }
+.design-corsair .is-revealed { animation: co-pull .42s steps(7, end) both; }
+
+@media (max-width: 860px) {
+  .design-corsair .brand { position: static; width: min(86vw, 420px); margin: 0 auto 6px; display: block; }
+  .design-corsair .s-hero .wrap > *:not(.brand) { max-width: 100%; }
+  .design-corsair .s-hero { align-items: flex-start; padding-top: 34px; }
+}
+
+@media (max-width: 640px) {
+  .design-corsair .s { padding: 44px 20px; }
+  .design-corsair .s-join::before { width: 100%; clip-path: polygon(0 0, 100% 0, 100% 74%, 0 92%); }
+  .design-corsair .cd-unit { min-width: 76px; }
+  .design-corsair .cd-num { font-size: 34px; }
+  .design-corsair .signup-input { border-right-width: 4px; }
+  .design-corsair .signup-btn { width: 100%; margin-top: -4px; }
+  .design-corsair .stat, .design-corsair .step { border-right-width: 4px; border-bottom-width: 0; }
+  .design-corsair .stat:last-child, .design-corsair .step:last-child { border-bottom-width: 4px; }
+}
+
+@media (max-height: 720px) {
+  .design-corsair .title { font-size: clamp(46px, 9.5vw, 100px); }
+  .design-corsair .cd-eyebrow { margin-top: 22px; }
+  .design-corsair .signup { margin-top: 22px; }
+}
+
+/* ═══════ countdown right + the sections merged in from /about ═══════════ */
+
+@media (min-width: 861px) {
+  .design-corsair .countdown { position: absolute; top: 0; right: 0; z-index: 4; text-align: right; max-width: none; width: auto; }
+  .design-corsair .cd-list { justify-content: flex-end; }
+  .design-corsair .cd-eyebrow { margin-top: 0; }
+  .design-corsair .cd-unit { border-right-width: 4px; border-left-width: 0; }
+  .design-corsair .cd-unit:first-child { border-left-width: 4px; }
+  /* drop the moon clear of the numbers */
+  .design-corsair .s-hero::before { top: 30vmin; }
+}
+
+.design-corsair .platforms { display: flex; flex-wrap: wrap; gap: 0; margin-top: 26px; }
+.design-corsair .chip {
+  background: var(--co-ink); color: var(--co-parch);
+  border: 3px solid var(--co-gold); border-right-width: 0; padding: 9px 15px;
+  font-size: 12.5px; letter-spacing: .1em; text-transform: uppercase;
+}
+.design-corsair .chip:last-child { border-right-width: 3px; }
+.design-corsair .chip:nth-child(even) { background: var(--co-gold); color: var(--co-ink); }
+.design-corsair .chip a { text-decoration: none; }
+
+/* stage sits on the sea so it does not read as a third parchment plate */
+.design-corsair .s-stage { background: var(--co-sea-mid); color: var(--co-parch); }
+.design-corsair .s-stage .h-mark { background: var(--co-gold); color: var(--co-ink); box-shadow: 10px 10px 0 0 var(--co-blood); }
+.design-corsair .s-stage .tag { border-color: var(--co-parch); outline-color: var(--co-gold); color: var(--co-parch); }
+.design-corsair .s-stage .tag:nth-child(3n+2) { background: var(--co-parch); color: var(--co-ink); }
+
+/* Real water behind the plates. Kept dark enough that the gold borders and the
+   caption strips still read — the photo is a backdrop, not the subject. */
+.design-corsair .s-gallery {
+  background:
+    linear-gradient(rgba(6, 23, 38, .74), rgba(6, 23, 38, .74)),
+    url("../img/sea-water.jpg") center / cover no-repeat fixed;
+  color: var(--co-parch);
+}
+/* `fixed` costs a repaint on every scroll on mobile, and iOS ignores it anyway */
+@media (max-width: 760px), (prefers-reduced-motion: reduce) {
+  .design-corsair .s-gallery { background-attachment: scroll; }
+}
+.design-corsair .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 0; }
+.design-corsair .shot { border: 4px solid var(--co-gold); background: var(--co-parch); overflow: hidden; }
+.design-corsair .shot-img {
+  width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block;
+  /* aged plate: warm, low contrast, like a photograph pasted into a logbook */
+  filter: grayscale(1) sepia(.45) hue-rotate(170deg) saturate(1.5) contrast(1.02);
+  transition: filter .35s ease, transform .35s ease;
+}
+/* full colour on hover — the plate "develops". :focus-within covers keyboard
+   users, and touch devices get colour permanently since they cannot hover. */
+.design-corsair .shot:hover .shot-img,
+.design-corsair .shot:focus-within .shot-img {
+  filter: none;
+  transform: scale(1.03);
+}
+@media (hover: none) {
+  .design-corsair .shot-img { filter: none; }
+}
+.design-corsair .shot-cap {
+  display: block; padding: 10px 12px; background: var(--co-parch); color: var(--co-ink);
+  background-image: var(--co-foxing);
+  font-size: 12.5px; font-style: italic; line-height: 1.35;
+}
+
+/* Closing section sits on the same water as the gallery, heavier overlay because
+   this one is all type. Bookends the page against the hand-drawn hero sea. */
+.design-corsair .s-partners {
+  background:
+    linear-gradient(rgba(11, 31, 51, .88), rgba(11, 31, 51, .88)),
+    url("../img/sea-water.jpg") center / cover no-repeat;
+  color: var(--co-parch);
+}
+.design-corsair .s-partners .h-mark { background: var(--co-gold); color: var(--co-ink); box-shadow: 10px 10px 0 0 var(--co-blood); }

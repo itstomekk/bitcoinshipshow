@@ -1,0 +1,68 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   base.css — the non-negotiables. Loaded before every design.
+
+   WHAT BELONGS HERE
+     · the reset
+     · state hooks that JS depends on ([data-locked], .hp, .is-revealed)
+     · accessibility floors (focus rings, reduced motion, tap targets)
+
+   WHAT DOES NOT BELONG HERE
+     · colours, fonts, spacing, layout, borders, shadows — ANY of it.
+       If two designs could reasonably disagree about it, it goes in the design file.
+
+   Keep this file boring. Every line added here is a line every future design has
+   to fight. It is deliberately under 100 lines and should stay that way.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body { min-height: 100svh; overflow-x: hidden; text-rendering: optimizeLegibility; }
+
+img, svg, video { display: block; max-width: 100%; height: auto; }
+
+ul, ol { list-style: none; }
+
+a { color: inherit; }
+
+button, input, textarea, select { font: inherit; color: inherit; }
+
+button { cursor: pointer; background: none; border: 0; }
+
+/* ── state hooks — JS depends on these, designs must not redefine them ───── */
+
+/* everything past the hero stays shut until an email lands */
+[data-locked] { display: none !important; }
+[hidden] { display: none !important; }
+
+/* Before an email is given the page is exactly one screen and cannot be
+   scrolled past. JS removes .locked from <html> on success. This is behaviour,
+   not decoration, which is why it lives here and not in a design file. */
+html.locked, html.locked body { height: 100svh; overflow: hidden; }
+/* overflow-y on the hero itself, not hidden: on a short laptop screen the form
+   or the confirmation card can be taller than the viewport, and without this the
+   submit button becomes unreachable. Scrolling is confined to screen one. */
+html.locked .s-hero { min-height: 100svh; height: 100svh; overflow-y: auto; }
+
+/* the honeypot. Never make this visible, never give it a design. */
+.hp { position: absolute !important; left: -9999px !important;
+      width: 1px !important; height: 1px !important; opacity: 0 !important; }
+
+/* ── accessibility floor ─────────────────────────────────────────────────── */
+
+:focus-visible { outline: 3px solid currentColor; outline-offset: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}

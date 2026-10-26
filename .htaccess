@@ -1,0 +1,102 @@
+# bitcoinship.show — site root
+#
+# CRITICAL: the old static index.html is still sitting in the docroot. On a default
+# Apache config DirectoryIndex tries index.html BEFORE index.php, so without this
+# line the design switcher silently never loads and "/" keeps serving the old page.
+# This is the single most likely reason a deploy "did nothing".
+# ---------------------------------------------------------------------------
+# bitcoinshipshow.com is a ServerAlias of this vhost, sharing this exact
+# docroot (see the cPanel addon domain entry). Nothing in Apache would
+# otherwise tell the two hostnames apart, so a request arriving as
+# bitcoinshipshow.com would serve the whole site directly and duplicate every
+# page. 301 it to the canonical host instead, preserving path and query string.
+#
+# This rule is inert until DNS for bitcoinshipshow.com points here
+# (91.211.221.253) instead of at GoDaddy's nameservers. It sits first so no
+# later directive can run before the redirect.
+# ---------------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTP_HOST} ^(www\.)?bitcoinshipshow\.com(:[0-9]+)?$ [NC]
+  RewriteRule ^ https://bitcoinship.show%{REQUEST_URI} [R=301,L]
+
+  # www.bitcoinship.show is a ServerAlias of this same vhost, so without this it
+  # serves every page a second time under a second hostname. Google treats that
+  # as duplicate content; the canonical tags, the sitemap and every OG URL name
+  # the bare host, so 301 the www one to it. Sits before the short-link rules.
+  RewriteCond %{HTTP_HOST} ^www\.bitcoinship\.show(:[0-9]+)?$ [NC]
+  RewriteRule ^ https://bitcoinship.show%{REQUEST_URI} [R=301,L]
+</IfModule>
+
+DirectoryIndex index.php index.html
+
+# ---------------------------------------------------------------------------
+# Catch-all for dead links: instead of a bare 404 the visitor is sent to the
+# homepage by gate/miss.php, which first logs the attempted path to
+# gate/data/misses-shipshow.csv so we can see which links are broken and fix
+# them. Files (css/js/images/...) and /gate/* keep a real 404 on purpose - a
+# missing stylesheet or endpoint must not silently turn into the homepage.
+# ---------------------------------------------------------------------------
+ErrorDocument 404 /gate/miss.php
+
+# ---------------------------------------------------------------------------
+# Legal documents for the "Hermes automation" Google OAuth app. They live at
+# /legal/privacy.html and /legal/terms.html; these aliases exist so the plain
+# URLs work too, because Google fetches the privacy-policy URL from the consent
+# screen config and a redirect to the homepage would fail verification.
+# The real .html files are not matched here.
+# ---------------------------------------------------------------------------
+RedirectMatch 301 ^/legal/privacy(/|\.php)?/?$ /legal/privacy.html
+RedirectMatch 301 ^/legal/terms(/|\.php)?/?$   /legal/terms.html
+RedirectMatch 301 ^/privacy(/|\.php|\.html)?/?$ /legal/privacy.html
+RedirectMatch 301 ^/terms(/|\.php|\.html)?/?$   /legal/terms.html
+RedirectMatch 301 ^/tos(/|\.php)?/?$           /legal/terms.html
+
+# a design choice is a query string, not a new document
+<IfModule mod_headers.c>
+  Header set Vary "Cookie"
+  # HTML must always be fresh this close to launch - no browser or proxy cache
+  <FilesMatch "\.(php|html)$">
+    Header set Cache-Control "no-store, no-cache, must-revalidate"
+    Header set Pragma "no-cache"
+  </FilesMatch>
+</IfModule>
+
+# CSS/JS are cache-busted with ?v=<mtime>, so they can be cached hard
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 7 days"
+  ExpiresByType application/javascript "access plus 7 days"
+</IfModule>
+
+# ---------------------------------------------------------------------------
+# Short permanent links for the channel bios / descriptions:
+#   bitcoinship.show/x     -> X profile
+#   bitcoinship.show/yt    -> YouTube channel
+#   bitcoinship.show/nostr -> Nostr profile
+#   bitcoinship.show/lp    -> LinkedIn posts
+#   bitcoinship.show/np    -> Nostr posts
+#   bitcoinship.show/tp    -> X (Twitter) posts
+#   bitcoinship.show/meetup -> meetup directory listings (the show as an ongoing
+#                              online meetup; use this in directory submissions)
+#
+# Each one routes through gate/go.php, which logs a click row (src=<name>-bio,
+# visible in CLICK SOURCES on the analytics dashboard) and 302s to the landing
+# page carrying the UTM tags, so the visit and the signup are attributed too.
+# The campaign tag is intentionally NOT an episode number: these links are
+# permanent, so they stay valid and comparable across episodes.
+# Add a new placement by copying a line and changing the three values.
+# ---------------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^x/?$      /gate/go.php?l=home&s=x-bio&utm_source=x&utm_medium=social&utm_campaign=x-always-on&utm_content=bio [L]
+  RewriteRule ^yt/?$     /gate/go.php?l=home&s=yt-bio&utm_source=youtube&utm_medium=channel-bio&utm_campaign=youtube-always-on&utm_content=bio [L]
+  RewriteRule ^nostr/?$ /gate/go.php?l=home&s=nostr-bio&utm_source=nostr&utm_medium=profile&utm_campaign=nostr-always-on&utm_content=profile [L]
+  RewriteRule ^lp/?$     /gate/go.php?l=home&s=linkedin-post&utm_source=linkedin&utm_medium=social&utm_campaign=linkedin-post&utm_content=post [L]
+  RewriteRule ^np/?$     /gate/go.php?l=home&s=nostr-post&utm_source=nostr&utm_medium=social&utm_campaign=nostr-post&utm_content=post [L]
+  RewriteRule ^tp/?$     /gate/go.php?l=home&s=x-post&utm_source=x&utm_medium=social&utm_campaign=x-post&utm_content=post [L]
+  # The show as an ongoing online meetup: stable path for meetup directories and
+  # community calendars, so visits and signups from those listings are attributed
+  # to the meetup placement rather than to an episode.
+  RewriteRule ^meetup/?$ /gate/go.php?l=home&s=meetup-dir&utm_source=meetup&utm_medium=directory&utm_campaign=meetup-always-on&utm_content=listing [L]
+</IfModule>

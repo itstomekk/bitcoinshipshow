@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Assets & brand kit — Bitcoin Shipshow</title>
+<meta name="description" content="Bitcoin Shipshow brand kit: logo, colours, type, posters, sponsor/guest logos, OBS backgrounds, platform links and copy you can reuse.">
+<link rel="canonical" href="https://bitcoinship.show/assets/">
+<!-- Open Graph -->
+<meta property="og:title" content="Assets & brand kit — Bitcoin Shipshow">
+<meta property="og:description" content="Logo, colours, type, E01 posters, OBS backgrounds, platform links and copy you can reuse.">
+<meta property="og:image" content="https://bitcoinship.show/img/og-shipshow-c01.jpg">
+<meta property="og:image:secure_url" content="https://bitcoinship.show/img/og-shipshow-c01.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Bitcoin Shipshow: a patchwork sailing ship in a wheat field. First Tuesday of every month, 13:00 ET / 19:00 Central European time. Brought to you by Freedom Tech, Bitcoin District and HiveTalk.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://bitcoinship.show/assets/">
+<meta property="og:site_name" content="Bitcoin Shipshow">
+<meta property="og:locale" content="en_US">
+<!-- Twitter / X card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@bitcoinshipshow">
+<meta name="twitter:title" content="Assets & brand kit — Bitcoin Shipshow">
+<meta name="twitter:description" content="Logo, colours, type, E01 posters, OBS backgrounds, platform links and copy you can reuse.">
+<meta name="twitter:image" content="https://bitcoinship.show/img/og-shipshow-c01.jpg">
+<meta name="twitter:image:alt" content="Bitcoin Shipshow: a patchwork sailing ship in a wheat field. First Tuesday of every month, 13:00 ET / 19:00 Central European time. Brought to you by Freedom Tech, Bitcoin District and HiveTalk.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#061726">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=IM+Fell+English:ital@0;1&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sea:#061726;
+    --sea-mid:#0C2E4A;
+    --sea-lite:#14486F;
+    --ink:#0B1F33;
+    --parch:#CBDCE8;
+    --parch-dk:#A9C3D6;
+    --gold:#D9AE3C;
+    --gold-hi:#EDC964;
+    --signal:#1E6FA6;
+    --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+    --sh:6px 6px 0 0 #0B1F33;
+    --sh-lg:10px 10px 0 0 #0B1F33;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--sea);color:var(--parch);font-family:"IM Fell English",Georgia,serif;font-size:18px;line-height:1.6}
+  body::before{content:"";position:fixed;inset:0;background-image:var(--grain);opacity:.06;mix-blend-mode:multiply;pointer-events:none;z-index:9}
+  a{color:var(--gold-hi);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+  h1,h2,h3,.display{font-family:"Pirata One","IM Fell English",Georgia,serif;font-weight:400;letter-spacing:.01em}
+  h1{font-size:clamp(46px,8vw,92px);line-height:.98;color:var(--gold)}
+  h1 .l2{color:var(--parch)}
+  h2{font-size:clamp(28px,4vw,42px);color:var(--gold);margin-bottom:8px}
+  h3{font-size:24px;color:var(--gold-hi);margin-bottom:6px}
+  p{margin:0 0 10px}
+  .eyebrow{font-family:Georgia,serif;font-weight:700;font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-hi)}
+  .lede{font-size:20px;max-width:70ch;color:var(--parch-dk)}
+  header.top{border-bottom:3px solid var(--gold);background:linear-gradient(180deg,#0A2745,#061726);padding:30px 0 26px}
+  .top-row{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+  .boat{width:140px;height:auto;filter:drop-shadow(6px 6px 0 rgba(0,0,0,.45))}
+  .kicker{display:inline-block;border:2px solid var(--gold);padding:4px 12px;font-family:Georgia,serif;font-weight:700;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-hi);margin-bottom:10px}
+  section{padding:48px 0;border-bottom:2px solid rgba(203,220,232,.12)}
+  section:last-of-type{border-bottom:0}
+  .grid{display:grid;gap:18px}
+  .g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+  .g3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+  .g4{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+  .card{background:var(--sea-mid);border:3px solid var(--gold);box-shadow:var(--sh);padding:20px}
+  .card.plate{background:var(--parch);color:var(--ink);border-color:var(--ink);box-shadow:var(--sh)}
+  .card.plate a{color:var(--signal)}
+  .sw{border:3px solid var(--ink);box-shadow:var(--sh);padding:14px;min-height:110px;display:flex;flex-direction:column;justify-content:flex-end;font-family:Georgia,serif;font-size:14px;font-weight:700}
+  .sw code{font-family:"Space Mono",monospace;font-weight:400;font-size:14px}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--ink);border:3px solid var(--ink);box-shadow:var(--sh);padding:11px 18px;font-family:Georgia,serif;font-weight:700;font-size:15px;text-decoration:none;text-transform:uppercase;letter-spacing:.06em}
+  .btn:hover{transform:translate(-2px,-2px);text-decoration:none}
+  .btn.ghost{background:var(--parch)}
+  .btn.small{padding:7px 12px;font-size:13px}
+  .btn .emoji{font-size:1.1em;line-height:1}
+  .meta{font-family:Georgia,serif;font-size:13px;color:var(--parch-dk)}
+  .logo-tile{display:flex;align-items:center;justify-content:center;border:3px solid var(--gold);padding:18px;min-height:140px;background:var(--sea-mid)}
+  .logo-tile.light{background:var(--parch);border-color:var(--ink)}
+  .logo-tile img{max-width:100%;max-height:80px}
+  .logo-tile.tall{min-height:200px}
+  .logo-tile.tall img{max-height:140px}
+  .logo-tile.mark img{max-height:56px}
+  pre{font-family:"Space Mono",monospace;font-size:13px;line-height:1.5;background:#04101C;border-left:4px solid var(--gold);padding:12px 14px;overflow-x:auto;white-space:pre-wrap}
+  ul.plain{list-style:none}
+  ul.plain li{border-bottom:1px dashed rgba(203,220,232,.25);padding:8px 0;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+  ul.plain li b{font-family:Georgia,serif;font-size:15px}
+  .dodont{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+  .dodont ul{list-style:none}
+  .dodont li{padding:6px 0 6px 24px;position:relative;border-bottom:1px dashed rgba(203,220,232,.2)}
+  .dodont li::before{position:absolute;left:0;font-weight:700}
+  .do li::before{content:"✓";color:var(--gold-hi)}
+  .dont li::before{content:"✕";color:#C2543F}
+  .posters{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+  .poster{border:3px solid var(--gold);box-shadow:var(--sh);background:var(--sea-mid)}
+  .poster img{display:block;width:100%;height:auto}
+  .poster figcaption{padding:8px 10px;font-family:Georgia,serif;font-size:12px;display:flex;justify-content:space-between;gap:8px;align-items:center;background:rgba(10,46,82,.6)}
+  .logo-row{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+  .logo-row img{max-height:48px;width:auto}
+  .tag{display:inline-block;background:var(--gold);color:var(--ink);font-family:"Space Mono",monospace;font-size:14px;padding:2px 8px;border:2px solid var(--ink)}
+  .download-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:6px}
+  .download-row a{display:inline-flex;align-items:center;gap:6px}
+  footer{padding:38px 0 50px;background:#04101C;border-top:3px solid var(--gold)}
+  .footer-grid{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+  .footer-col h4{font-family:"Pirata One",serif;font-size:22px;color:var(--gold);margin-bottom:8px}
+  @media(max-width:640px){
+    body{font-size:17px}
+    .boat{width:100px}
+    .posters{grid-template-columns:1fr}
+    .g3,.g4{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap top-row">
+    <img class="boat" src="/img/shipshow-boat@2x.png" alt="Bitcoin Shipshow mark — paper boat folded from The Times, 3 Jan 2009" width="866" height="516">
+    <div>
+      <span class="kicker">Assets · brand kit ⚡</span>
+      <h1><span class="l1">Bitcoin</span> <span class="l2">Shipshow</span></h1>
+      <p class="lede">Logos, colours, type, posters and copy — everything to write about, host, sponsor or shout about the show 🏴‍☠️</p>
+    </div>
+  </div>
+</header>
+<section>
+  <div class="wrap">
+    <p class="eyebrow">01 · Quick start</p>
+    <h2>Use it, don't redraw it</h2>
+    <p class="lede">The kit is free for anything talking about Bitcoin Shipshow. Keep the mark as-is — no recolouring, no effects, no words baked in. The boat is a paper boat folded from <i>The Times</i>, 3 January 2009. The name is set in type.</p>
+    <div class="grid g2" style="margin-top:22px">
+      <div class="card plate">
+        <h3>Download the whole kit ⬇️</h3>
+        <p class="meta" style="color:#3A4A5A">Wordmarks, boat (PNG + SVG), app icons, 15 posters (9 E01 + 6 reusable), sponsor/guest logos, link-preview card, brand README.</p>
+        <p style="margin-top:12px"><a class="btn" href="/assets/downloads/bitcoin-shipshow-brand.zip"><span class="emoji">📦</span> Download zip · 4.3 MB</a></p>
+      </div>
+      <div class="card">
+        <h3>One rule about the room 🔒</h3>
+        <p>The live room link is private — only ever goes out in the invitation email. Never publish it. Link to <a href="https://bitcoinship.show/live/">bitcoinship.show/live</a> instead.</p>
+        <p class="meta">Questions, media, guest pitches: <a href="mailto:invites@bitcoinship.show">invites@bitcoinship.show</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <p class="eyebrow">02 · Logo</p>
+    <h2>The mark and the wordmark</h2>
+    <p class="lede">Boat rides on dark navy. Wordmark is <b>Bitcoin Shipshow</b> in Pirata One — cream on dark, ink on light. Clear space = at least half the boat's height.</p>
+    <div class="grid g3" style="margin-top:20px">
+      <figure class="logo-tile">
+        <img src="/assets/downloads/logos/boat-mark.png" alt="Bitcoin Shipshow boat mark" loading="lazy">
+        <figcaption style="text-align:center;margin-top:8px">
+          <strong>Boat mark, PNG</strong> 866×516
+          <div class="download-row"><a class="btn small" href="/assets/downloads/logos/boat-mark.png" download><span class="emoji">⬇️</span> PNG</a><a class="btn small ghost" href="/assets/downloads/logos/boat-mark.svg" download><span class="emoji">⬇️</span> SVG</a></div>
+        </figcaption>
+      </figure>
+      <figure class="logo-tile">
+        <img src="/assets/downloads/wordmark-cream.png" alt="Bitcoin Shipshow wordmark in cream" loading="lazy">
+        <figcaption style="text-align:center;margin-top:8px">
+          <strong>Wordmark, cream</strong> 1768×291
+          <div class="download-row"><a class="btn small" href="/assets/downloads/wordmark-cream.png" download><span class="emoji">⬇️</span> PNG</a></div>
+        </figcaption>
+      </figure>
+      <figure class="logo-tile">
+        <img src="/assets/downloads/wordmark-gold.png" alt="Bitcoin Shipshow wordmark in gold" loading="lazy">
+        <figcaption style="text-align:center;margin-top:8px">
+          <strong>Wordmark, gold</strong> 1768×291
+          <div class="download-row"><a class="btn small" href="/assets/downloads/wordmark-gold.png" download><span class="emoji">⬇️</span> PNG</a></div>
+        </figcaption>
+      </figure>
+    </div>
+    <div class="grid g3" style="margin-top:16px">
+      <figure class="logo-tile light">
+        <img src="/assets/downloads/wordmark-ink.png" alt="Bitcoin Shipshow wordmark in ink on parchment" loading="lazy">
+        <figcaption style="text-align:center;margin-top:8px">
+          <strong>Wordmark, ink</strong> 1768×291
+          <div class="download-row"><a class="btn small" href="/assets/downloads/wordmark-ink.png" download><span class="emoji">⬇️</span> PNG</a></div>
+        </figcaption>
+      </figure>
+      <figure class="logo-tile light" style="background:var(--parch)">
+        <img src="/assets/downloads/logos/boat-mark.png" alt="Boat mark on parchment" loading="lazy" style="max-height:64px">
+        <figcaption style="text-align:center;margin-top:8px">
+          <strong>Boat mark, parchment</strong>
+          <div class="download-row"><a class="btn small ghost" href="/assets/downloads/logos/boat-mark.png" download><span class="emoji">⬇️</span> PNG</a></div>
+        </figcaption>
+      </figure>
+      <figure class="logo-tile">
+        <img src="/assets/downloads/logos/icon-512.png" alt="Bitcoin Shipshow app icon" loading="lazy" style="max-height:88px;border:2px solid var(--gold)">
+        <figcaption style="text-align:center;margin-top:8px">
+          <strong>App icon / avatar</strong> 512×512
+          <div class="download-row"><a class="btn small" href="/assets/downloads/logos/icon-512.png" download><span class="emoji">⬇️</span> PNG</a><a class="btn small ghost" href="/assets/downloads/logos/apple-touch-icon.png" download><span class="emoji">⬇️</span> Apple touch</a><a class="btn small ghost" href="/assets/downloads/logos/favicon.ico" download><span class="emoji">⬇️</span> Favicon</a></div>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <p class="eyebrow">03 · Colour</p>
+    <h2>Deep sea, parchment, gold</h2>
+    <p class="lede">Cyanotype-blue poster palette: dark water, aged paper, one warm gold. No neon, no gradients, no glass.</p>
+    <div class="grid g4" style="margin-top:20px">
+      <div class="sw" style="background:#061726;color:#CBDCE8">Sea, deepest<br><code>#061726</code></div>
+      <div class="sw" style="background:#0C2E4A;color:#CBDCE8">Sea mid<br><code>#0C2E4A</code></div>
+      <div class="sw" style="background:#14486F;color:#EBF3FA">Sea light<br><code>#14486F</code></div>
+      <div class="sw" style="background:#0B1F33;color:#CBDCE8">Ink<br><code>#0B1F33</code></div>
+      <div class="sw" style="background:#CBDCE8;color:#0B1F33">Parchment<br><code>#CBDCE8</code></div>
+      <div class="sw" style="background:#A9C3D6;color:#0B1F33">Parchment dark<br><code>#A9C3D6</code></div>
+      <div class="sw" style="background:#D9AE3C;color:#0B1F33">Gold<br><code>#D9AE3C</code></div>
+      <div class="sw" style="background:#1E6FA6;color:#F4EFD9">Signal blue<br><code>#1E6FA6</code></div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <p class="eyebrow">04 · Type</p>
+    <h2>Pirata One + old serif</h2>
+    <div class="grid g2" style="margin-top:18px">
+      <div class="card">
+        <h3 style="font-family:'Pirata One',serif;font-size:40px;color:var(--gold)">Pirata One</h3>
+        <p>Display only — headlines, episode numbers, posters. Never body copy.</p>
+        <p class="meta"><a href="https://fonts.google.com/specimen/Pirata+One">Google Fonts</a> · SIL OFL · in zip as <code>fonts/PirataOne-Regular.ttf</code></p>
+      </div>
+      <div class="card">
+        <h3 style="font-family:'IM Fell English',serif;font-size:32px;color:var(--parch)">IM Fell English</h3>
+        <p>Body text, captions, emails — Georgia fallback everywhere.</p>
+        <p class="meta"><a href="https://fonts.google.com/specimen/IM+Fell+English">Google Fonts</a> · SIL OFL</p>
+      </div>
+    </div>
+    <pre style="margin-top:16px"><link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet"></pre>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <p class="eyebrow">05 · The look</p>
+    <h2>Paper-cut collage meets vintage woodcut 🏴‍☠️</h2>
+    <p class="lede">Paste this into any image tool to get the house style. The E01 art below was made with it.</p>
+    <div class="card plate" style="margin-top:16px">
+      <pre style="background:#0B1F33;color:#F4EFD9;border-left-color:#1E6FA6">Hybrid paper-cut collage meets vintage woodcut poster. Layered cut-paper
+shapes with visible torn edges, bold black woodcut outlines, limited ink
+palette (deep navy, cream, warm gold, optional warm red), paper grain,
+mid-century print feel. Minimal detail, generous empty space.
+No text, no logo, no watermark.</pre>
+    </div>
+    <div class="dodont" style="margin-top:18px">
+      <div class="card do">
+        <h3>Do ✓</h3>
+        <ul>
+          <li>use the palette, Pirata One, sharp corners, hard 10px offset shadows</li>
+          <li>keep it flat and layered — cut paper, not 3D</li>
+          <li>leave generous empty space so the title can breathe</li>
+          <li>set the event type yourself; generated text always misspells a guest</li>
+        </ul>
+      </div>
+      <div class="card dont">
+        <h3>Don't ✕</h3>
+        <ul>
+          <li>neon, gradients, glassmorphism, rounded corners</li>
+          <li>photoreal textures, glossy highlights, blurred drop shadows</li>
+          <li>geometric sans or system fonts in body copy</li>
+          <li>recolour or rotate the boat, or lock extra words into the logo</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <p class="eyebrow">06 · Naming</p>
+    <h2>How to write it</h2>
+    <ul class="plain">
+      <li><b>Bitcoin Shipshow</b> <span class="meta">two words, both capitalised — never "BitcoinShipshow" or "Bitcoin Ship Show"</span></li>
+      <li><b>Shipshow</b> <span class="meta">one word when short, e.g. "the Shipshow"</span></li>
+      <li><b>Episodes</b> <span class="meta">E01, E02, E03 … subtitle in quotes: E01 · Pirates' Community Call</span></li>
+      <li><b>Schedule</b> <span class="meta">monthly, first Tuesday, ~90 min on air, ~30 min off record</span></li>
+      <li><b>Times</b> <span class="meta">13:00 ET / 19:00 CET, never UTC</span></li>
+      <li><b>Hashtag</b> <span class="tag">#bitcoinshipshow</span> <span class="meta">secondary: #shipshow</span></li>
+      <li><b>URL</b> <span class="meta"><a href="https://bitcoinship.show">bitcoinship.show</a> · watch <a href="https://bitcoinship.show/live/">/live</a></span></li>
+      <li><b>X</b> <span class="meta"><a href="https://x.com/bitcoinshipshow">@bitcoinshipshow</a></span></li>
+      <li><b>YouTube</b> <span class="meta"><a href="https://www.youtube.com/@BitcoinShipshow">@BitcoinShipshow</a></span></li>
+      <li><b>Nostr</b> <span class="meta"><a href="https://njump.me/npub1mtjn0yp705hvgszssf2ddjpzk3zzjzgvu58dwwpkxqud0hde6fxss7cwyw">npub1mtjn0yp705hvgszssf2ddjpzk3zzjzgvu58dwwpkxqud0hde6fxss7cwyw</a></span></li>
+    </ul>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <p class="eyebrow">07 · Copy</p>
+    <h2>Text you can reuse 📋</h2>
+    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(400px,1fr));margin-top:20px">
+      <div class="card"><h3>One line</h3><pre>Bitcoin Shipshow — a monthly live show where builders demo what they are actually shipping.</pre></div>
+      <div class="card"><h3>Short paragraph</h3><pre>Bitcoin Shipshow is a monthly live show where builders demo what they are
+actually shipping in Bitcoin, Lightning and Nostr. Live demos, not pitches.
+Give your email and the room link lands in your inbox.</pre></div>
+      <div class="card"><h3>Long paragraph</h3><pre>Bitcoin Shipshow is a monthly live show where builders demo what they are
+actually shipping in Bitcoin, Lightning and Nostr — early projects, a
+well-known project showing a fresh release, and a short slot for something
+still too early to demo. Live demos, not pitches. The last half hour is off
+the record: no recording, no clips, just the room.</pre></div>
+      <div class="card"><h3>Post-ready (X / LinkedIn) 📱</h3><pre>E01 is Tue 6 Oct — 13:00 ET / 19:00 CET.
+Pakstr, IndeeHub, Sidecar and Angor demo what they shipped.
+Live demos, not pitches. bitcoinship.show #bitcoinshipshow 🏴‍☠️</pre></div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <p class="eyebrow">08 · Graphics</p>
+    <h2>E01 poster set 🎨</h2>
+    <p class="lede">Nine posters, 1200×630, house style — paper-cut art, type in Pirata One. Free for E01. Sponsor strip: Freedom Tech (main), Bitcoin District + HiveTalk (supported by).</p>
+    <div class="posters" style="margin-top:20px">
+      <figure class="poster"><img src="/assets/downloads/posters/poster-01.jpg" alt="E01 poster: paper boat under a paper moon" loading="lazy"><figcaption><span>01 · paper boat, moon</span><a class="btn small" href="/assets/downloads/posters/poster-01.jpg" download><span class="emoji">⬇️</span> 1200×630</a></figcaption></figure>
+      <figure class="poster"><img src="/assets/downloads/posters/poster-02.jpg" alt="E01 poster: lighthouse on a rock" loading="lazy"><figcaption><span>02 · lighthouse</span><a class="btn small" href="/assets/downloads/posters/poster-02.jpg" download><span class="emoji">⬇️</span> 1200×630</a></figcaption></figure>
+      <figure class="poster"><img src="/assets/downloads/posters/poster-03.jpg" alt="E01 poster: kraken around a paper boat" loading="lazy"><figcaption><span>03 · kraken</span><a class="btn small" href="/assets/downloads/posters/poster-03.jpg" download><span class="emoji">⬇️</span> 1200×630</a></figcaption></figure>
+      <figure class="poster"><img src="/assets/downloads/posters/poster-04.jpg" alt="E01 poster: treasure map" loading="lazy"><figcaption><span>04 · treasure map</span><a class="btn small" href="/assets/downloads/posters/poster-04.jpg" download><span class="emoji">⬇️</span> 1200×630</a></figcaption></figure>
+      <figure class="poster"><img src="/assets/downloads/posters/poster-05.jpg" alt="E01 poster: ship's wheel and lantern" loading="lazy"><figcaption><span>05 · wheel & lantern</span><a class="btn small" href="/assets/downloads/posters/poster-05.jpg" download><span class="emoji">⬇️</span> 1200×630</a></figcaption></figure>
+      <figure class="poster"><img src="/assets/downloads/posters/poster-06.jpg" alt="E01 poster: Bitcoin moon over the sea" loading="lazy"><figcaption><span>06 · Bitcoin moon</span><a class="btn small" href="/assets/downloads/posters/poster-06.jpg" download><span class="emoji">⬇️</span> 1200×630</a></figcaption></figure>
+      <figure class="poster"><img src="/assets/downloads/posters/poster-07.jpg" alt="E01 poster: the crew in the cabin" loading="lazy"><figcaption><span>07 · cabin crew</span><a class="btn small" href="/assets/downloads/posters/poster-07.jpg" download><span class="emoji">⬇️</span> 1200×630</a></figcaption></figure>
+      <figure class="poster"><img src="/assets/downloads/posters/poster-08.jpg" alt="E01 poster: sailing into the sunrise" loading="lazy"><figcaption><span>08 · sunrise sail</span><a class="btn small" href="/assets/downloads/posters/poster-08.jpg" download><span class="emoji">⬇️</span> 1200×630</a></figcaption></figure>
+      <figure class="poster"><img src="/assets/downloads/posters/poster-09.jpg" alt="E01 poster: the pier at night" loading="lazy"><figcaption><span>09 · pier at night</span><a class="btn small" href="/assets/downloads/posters/poster-09.jpg" download><span class="emoji">⬇️</span> 1200×630</a></figcaption></figure>
+    </div>
+    <ul class="plain" style="margin-top:18px">
+      <li><b>All nine, contact sheet</b> <span class="meta">one image to compare the set</span> <a class="btn small" href="/assets/downloads/posters/contact-sheet.jpg" download><span class="emoji">⬇️</span> JPG</a></li>
+      <li><b>Link-preview card</b> <span class="meta">1200×630, shows in LinkedIn / X / WhatsApp</span> <a class="btn small" href="/assets/downloads/og-card-1200x630.jpg" download><span class="emoji">⬇️</span> JPG</a></li>
+    </ul>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <p class="eyebrow">09 · Graphics, evergreen ♻️</p>
+    <h2>Reusable posters — no episode, no guests 🛥️</h2>
+    <p class="lede">Six posters that keep working episode after episode: no date, no names, no guest logos. Each says <b>First Tuesday of every month</b> and <b>13:00 ET · 19:00 CET</b>, and the strip reads <b>brought to you by</b> with the three sponsor logos. Pick one, add a caption, post.</p>
+    <div class="posters" style="margin-top:20px">
+      <figure class="poster"><img src="/assets/downloads/posters-selected/poster-a02.jpg" alt="Reusable poster: harbour market" loading="lazy"><figcaption><span>a02 · harbour market</span><a class="btn small" href="/assets/downloads/posters-selected/poster-a02.jpg" download><span class="emoji">⬇️</span> 1200×630</a></figcaption></figure>
+      <figure class="poster"><img src="/assets/downloads/posters-selected/poster-a03.jpg" alt="Reusable poster: in space" loading="lazy"><figcaption><span>a03 · in space</span><a class="btn small" href="/assets/downloads/posters-selected/poster-a03.jpg" download><span class="emoji">⬇️</span> 1200×630</a></figcaption></figure>
+      <figure class="poster"><img src="/assets/downloads/posters-selected/poster-a04.jpg" alt="Reusable poster: sunrise sail" loading="lazy"><figcaption><span>a04 · sunrise sail</span><a class="btn small" href="/assets/downloads/posters-selected/poster-a04.jpg" download><span class="emoji">⬇️</span> 1200×630</a></figcaption></figure>
+      <figure class="poster"><img src="/assets/downloads/posters-selected/poster-b03.jpg" alt="Reusable poster: queueing up" loading="lazy"><figcaption><span>b03 · queueing up</span><a class="btn small" href="/assets/downloads/posters-selected/poster-b03.jpg" download><span class="emoji">⬇️</span> 1200×630</a></figcaption></figure>
+      <figure class="poster"><img src="/assets/downloads/posters-selected/poster-b04.jpg" alt="Reusable poster: lanterns" loading="lazy"><figcaption><span>b04 · lanterns</span><a class="btn small" href="/assets/downloads/posters-selected/poster-b04.jpg" download><span class="emoji">⬇️</span> 1200×630</a></figcaption></figure>
+      <figure class="poster"><img src="/assets/downloads/posters-selected/poster-b09.jpg" alt="Reusable poster: the lone boat" loading="lazy"><figcaption><span>b09 · the lone boat</span><a class="btn small" href="/assets/downloads/posters-selected/poster-b09.jpg" download><span class="emoji">⬇️</span> 1200×630</a></figcaption></figure>
+    </div>
+    <ul class="plain" style="margin-top:16px">
+      <li><b>All six, contact sheet</b> <span class="meta">numbered, one image to compare</span> <a class="btn small" href="/assets/downloads/posters-selected/contact-sheet-selected.jpg" download><span class="emoji">⬇️</span> JPG</a></li>
+      <li><b>Everything</b> <span class="meta">these six are in the brand zip too</span> <a class="btn small" href="/assets/downloads/bitcoin-shipshow-brand.zip"><span class="emoji">⬇️</span> ZIP</a></li>
+    </ul>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <p class="eyebrow">10 · OBS backgrounds & overlays 🎬</h2>
+    <h2>Ready for your stream</h2>
+    <p class="lede">Drop these straight into OBS. All 1920×1080, transparent where noted, house style baked in.</p>
+    <div class="grid g3" style="margin-top:20px">
+      <figure class="logo-tile tall">
+        <img src="/assets/downloads/obs/obs-bg-main.jpg" alt="OBS main background — dark sea with paper boat" loading="lazy">
+        <figcaption style="text-align:center;margin-top:8px">
+          <strong>Main background</strong> 1920×1080
+          <div class="download-row"><a class="btn small" href="/assets/downloads/obs/obs-bg-main.jpg" download><span class="emoji">⬇️</span> JPG</a></div>
+        </figcaption>
+      </figure>
+      <figure class="logo-tile tall">
+        <img src="/assets/downloads/obs/obs-bg-guests.jpg" alt="OBS guest background — labelled slots for 4 guests" loading="lazy">
+        <figcaption style="text-align:center;margin-top:8px">
+          <strong>Guest slots</strong> 1920×1080
+          <div class="download-row"><a class="btn small" href="/assets/downloads/obs/obs-bg-guests.jpg" download><span class="emoji">⬇️</span> JPG</a></div>
+        </figcaption>
+      </figure>
+      <figure class="logo-tile tall">
+        <img src="/assets/downloads/obs/obs-overlay-lower.png" alt="OBS lower third overlay — gold frame, parchment text area" loading="lazy">
+        <figcaption style="text-align:center;margin-top:8px">
+          <strong>Lower third</strong> 1920×1080, transparent PNG
+          <div class="download-row"><a class="btn small" href="/assets/downloads/obs/obs-overlay-lower.png" download><span class="emoji">⬇️</span> PNG</a></div>
+        </figcaption>
+      </figure>
+    </div>
+    <div class="grid g3" style="margin-top:16px">
+      <figure class="logo-tile tall">
+        <img src="/assets/downloads/obs/obs-starting-soon.jpg" alt="OBS starting soon screen — countdown, gold accents" loading="lazy">
+        <figcaption style="text-align:center;margin-top:8px">
+          <strong>Starting soon</strong> 1920×1080
+          <div class="download-row"><a class="btn small" href="/assets/downloads/obs/obs-starting-soon.jpg" download><span class="emoji">⬇️</span> JPG</a></div>
+        </figcaption>
+      </figure>
+      <figure class="logo-tile tall">
+        <img src="/assets/downloads/obs/obs-break.jpg" alt="OBS break screen — be right back, paper boat" loading="lazy">
+        <figcaption style="text-align:center;margin-top:8px">
+          <strong>Break / BRB</strong> 1920×1080
+          <div class="download-row"><a class="btn small" href="/assets/downloads/obs/obs-break.jpg" download><span class="emoji">⬇️</span> JPG</a></div>
+        </figcaption>
+      </figure>
+      <figure class="logo-tile tall">
+        <img src="/assets/downloads/obs/obs-end.jpg" alt="OBS end screen — thanks for watching, links" loading="lazy">
+        <figcaption style="text-align:center;margin-top:8px">
+          <strong>End screen</strong> 1920×1080
+          <div class="download-row"><a class="btn small" href="/assets/downloads/obs/obs-end.jpg" download><span class="emoji">⬇️</span> JPG</a></div>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <p class="eyebrow">11 · Platforms & contact 📡</h2>
+    <h2>Where we are</h2>
+    <div class="grid g4" style="margin-top:18px">
+      <div class="card plate">
+        <h3>🌐 Website</h3>
+        <p class="meta"><a href="https://bitcoinship.show">bitcoinship.show</a></p>
+        <p class="meta"><a href="https://bitcoinship.show/live/">bitcoinship.show/live</a> — watch page</p>
+      </div>
+      <div class="card plate">
+        <h3>📺 YouTube</h3>
+        <p class="meta"><a href="https://www.youtube.com/@BitcoinShipshow">@BitcoinShipshow</a></p>
+        <p class="meta">Live stream + episodes</p>
+      </div>
+      <div class="card plate">
+        <h3>🐦 X / Twitter</h3>
+        <p class="meta"><a href="https://x.com/bitcoinshipshow">@bitcoinshipshow</a></p>
+        <p class="meta">Announcements, clips, live threads</p>
+      </div>
+      <div class="card plate">
+        <h3>🟣 Nostr</h3>
+        <p class="meta"><a href="https://njump.me/npub1mtjn0yp705hvgszssf2ddjpzk3zzjzgvu58dwwpkxqud0hde6fxss7cwyw">npub1mtjn0yp705hvgszssf2ddjpzk3zzjzgvu58dwwpkxqud0hde6fxss7cwyw</a></p>
+      </div>
+    </div>
+    <div class="grid g3" style="margin-top:16px">
+      <div class="card plate">
+        <h3>📧 Email</h3>
+        <p class="meta"><a href="mailto:invites@bitcoinship.show">invites@bitcoinship.show</a></p>
+        <p class="meta">Signups, invites, media, guest pitches</p>
+      </div>
+      <div class="card plate">
+        <h3>🎥 YouTube Community</h3>
+        <p class="meta"><a href="https://www.youtube.com/@BitcoinShipshow/community">Community tab</a></p>
+        <p class="meta">Polls, behind-the-scenes, reminders</p>
+      </div>
+      <div class="card plate">
+        <h3>🏴‍☠️ Hashtag</h3>
+        <p class="meta"><a href="https://x.com/search?q=%23bitcoinshipshow">#bitcoinshipshow</a></p>
+        <p class="meta">Secondary: <a href="https://x.com/search?q=%23shipshow">#shipshow</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <p class="eyebrow">12 · Partners</p>
+    <h2>Sponsor and guest logos 🤝</h2>
+    <p class="lede">Free to use when writing about the show and its episodes. Guest logos belong to the guests — for E01 promotion only.</p>
+    <h3 style="margin-top:18px">Main sponsor</h3>
+    <div class="grid g3">
+      <figure class="logo-tile tall">
+        <img src="/assets/downloads/logos/freedomtech-logo.png" alt="Freedom Tech — main sponsor" loading="lazy">
+        <figcaption style="text-align:center;margin-top:8px">
+          <strong>Freedom Tech</strong> — Main sponsor
+          <div class="download-row"><a class="btn small" href="/assets/downloads/logos/freedomtech-logo.png" download><span class="emoji">⬇️</span> PNG</a></div>
+        </figcaption>
+      </figure>
+    </div>
+    <h3 style="margin-top:22px">Supporting</h3>
+    <div class="grid g3">
+      <figure class="logo-tile mark">
+        <img src="/assets/downloads/logos/bitcoin-district-logo.png" alt="Bitcoin District" loading="lazy">
+        <figcaption style="text-align:center;margin-top:8px">
+          <strong>Bitcoin District</strong>
+          <div class="download-row"><a class="btn small ghost" href="/assets/downloads/logos/bitcoin-district-logo.png" download><span class="emoji">⬇️</span> PNG</a></div>
+        </figcaption>
+      </figure>
+      <figure class="logo-tile mark">
+        <img src="/assets/downloads/logos/hivetalk-logo-dark.png" alt="HiveTalk" loading="lazy">
+        <figcaption style="text-align:center;margin-top:8px">
+          <strong>HiveTalk</strong>
+          <div class="download-row"><a class="btn small ghost" href="/assets/downloads/logos/hivetalk-logo-dark.png" download><span class="emoji">⬇️</span> PNG</a></div>
+        </figcaption>
+      </figure>
+    </div>
+    <h3 style="margin-top:22px">E01 guests</h3>
+    <div class="grid g4">
+      <figure class="logo-tile mark">
+        <img src="/assets/downloads/guests/pakstr.png" alt="Pakstr" loading="lazy">
+        <figcaption style="text-align:center;margin-top:8px">
+          <strong>Pakstr</strong>
+          <div class="download-row"><a class="btn small ghost" href="/assets/downloads/guests/pakstr.png" download><span class="emoji">⬇️</span> PNG</a></div>
+        </figcaption>
+      </figure>
+      <figure class="logo-tile mark">
+        <img src="/assets/downloads/guests/indeehub.png" alt="IndeeHub" loading="lazy">
+        <figcaption style="text-align:center;margin-top:8px">
+          <strong>IndeeHub</strong>
+          <div class="download-row"><a class="btn small ghost" href="/assets/downloads/guests/indeehub.png" download><span class="emoji">⬇️</span> PNG</a></div>
+        </figcaption>
+      </figure>
+      <figure class="logo-tile mark">
+        <img src="/assets/downloads/guests/sidecar.png" alt="Sidecar" loading="lazy">
+        <figcaption style="text-align:center;margin-top:8px">
+          <strong>Sidecar</strong>
+          <div class="download-row"><a class="btn small ghost" href="/assets/downloads/guests/sidecar.png" download><span class="emoji">⬇️</span> PNG</a></div>
+        </figcaption>
+      </figure>
+      <figure class="logo-tile mark">
+        <img src="/assets/downloads/guests/angor.png" alt="Angor" loading="lazy">
+        <figcaption style="text-align:center;margin-top:8px">
+          <strong>Angor</strong>
+          <div class="download-row"><a class="btn small ghost" href="/assets/downloads/guests/angor.png" download><span class="emoji">⬇️</span> PNG</a></div>
+        </figcaption>
+      </figure>
+    </div>
+    <p class="meta" style="margin-top:18px">All of the above are in the zip under <code>logos/</code>, <code>guests/</code> and <code>obs/</code>.</p>
+  </div>
+</section>
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Bitcoin Shipshow</h4>
+        <p class="display" style="font-size:34px;color:var(--gold);margin:4px 0 8px">Show us what you're building 🛥️</p>
+        <p><a href="/">bitcoinship.show</a> · <a href="/live/">watch live 🎥</a> · <a href="/about/">what is this?</a> · <span class="tag">#bitcoinshipshow</span></p>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p><a href="mailto:invites@bitcoinship.show">invites@bitcoinship.show</a></p>
+        <p class="meta">The room link stays private — it goes out by email only 🔒</p>
+      </div>
+      <div class="footer-col">
+        <h4>Updated</h4>
+        <p class="meta">5 October 2026</p>
+        <p class="meta">Built with the house style: paper-cut collage meets vintage woodcut ⚡</p>
+      </div>
+    </div>
+  </div>
+</footer>
+<script data-goatcounter="https://bitcoinshipshow.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

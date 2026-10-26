@@ -1,0 +1,43 @@
+# Bitcoin Shipshow
+
+> Bitcoin Shipshow is a free monthly online Bitcoin meetup and live demo show — a pirates' community call where builders demo what they are actually shipping in Bitcoin, Lightning and Nostr. Live demos, not pitches.
+
+Bitcoin Shipshow runs on the first Tuesday of every month at 13:00 ET / 19:00 CET and lasts about ninety minutes. Each expedition puts 3-5 working demos on stage: early and unknown builders alongside one well-known project showing a fresh release, plus a short slot for something still too early to demo. The last half hour is off the record, with the room open and nothing recorded.
+
+The show grew out of three years of Bitcoin community calls. It is independent and community-run: the hosts curate every slot, no media company sits behind it, watching and demoing are both free, one demo slot each month is reserved for a project with no partner behind it, and tips and zaps on the stream go to the people building rather than to the hosts.
+
+Every expedition becomes published video content — full episodes and clips — so the show also works as a rolling archive of fresh Bitcoin, Lightning and Nostr releases.
+
+## What gets demoed
+
+Wallets, Lightning hubs, hardware signers, Nostr clients and relays, music and media apps, Bitcoin films and art, education projects, meetups and circular economies, dev tools and open source. Working demos only, alpha and beta welcome, no slideware and no price talk.
+
+## How to take part
+
+- Watch: the stream is public, and the replays are published afterwards.
+- Join the room: sign up with an email and the invitation plus the room link arrive by email. The room link is never posted on the public site.
+- Demo: three to five slots per expedition. If it runs, even roughly, it is ready.
+
+## Key pages
+
+- [What is Bitcoin Shipshow, and the questions people ask](https://bitcoinship.show/about/): the schedule, the format, how to get in, and the FAQ. The FAQ lives only on this page.
+- [The next expedition](https://bitcoinship.show/live/): countdown and line-up.
+- [The front page](https://bitcoinship.show/): email sign-up for the invite.
+- [Brand kit](https://bitcoinship.show/assets/): logos, colours, type, posters and copy blocks, free to use when talking about the show.
+- [Partner one-pager](https://bitcoinship.show/sponsors/): sponsorship, for partners only.
+- [The mini-game](https://bitcoinship.show/game/): a browser game using the show's art.
+
+## Elsewhere
+
+- YouTube (episodes and clips): https://www.youtube.com/@BitcoinShipshow
+- X: https://x.com/bitcoinshipshow
+- Nostr: https://njump.me/npub1mtjn0yp705hvgszssf2ddjpzk3zzjzgvu58dwwpkxqud0hde6fxss7cwyw
+- Hashtag: #bitcoinshipshow
+- Zaps and payments: ahoy@bitcoinship.show (Lightning address, NIP-05)
+- Contact: hello@bitcoinship.show
+
+## Notes
+
+- Canonical host is https://bitcoinship.show (no www; www 301s to it).
+- Times are always given as ET and CET, never UTC.
+- The show is not affiliated with any exchange, fund or token project.

@@ -1,0 +1,12 @@
+# Never commit these
+gate/config.php
+gate/data/
+*.csv
+*.env
+*.log
+__pycache__/
+*.pyc
+.pytest_cache/
+# Kept out on purpose
+game/README.md
+_stage/

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bitcoin Shipshow — Countdown to Next Episode</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: transparent !important;
+      font-family: 'Cinzel', serif;
+      color: #D9AE3C;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      padding: 20px;
+    }
+    .countdown-wrapper {
+      text-align: center;
+      text-shadow: 
+        0 0 20px rgba(217, 174, 60, 0.8),
+        0 0 40px rgba(217, 174, 60, 0.5),
+        2px 2px 4px rgba(0,0,0,0.9);
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.8));
+    }
+    .label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 14px;
+      font-weight: 700;
+      color: #bfa882;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      opacity: 0.9;
+    }
+    .time {
+      font-size: clamp(48px, 15vw, 140px);
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: #F4E8D1;
+      font-variant-numeric: tabular-nums;
+    }
+    .time.minimal {
+      font-size: clamp(36px, 12vw, 100px);
+    }
+    .units {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
+    .unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 60px;
+    }
+    .value {
+      font-family: 'Cinzel', serif;
+      font-size: inherit;
+      font-weight: 900;
+      line-height: 1;
+    }
+    .unit-label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 10px;
+      color: #8c7355;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 4px;
+      opacity: 0.7;
+    }
+    .separator {
+      font-size: 0.6em;
+      color: #8c7355;
+      align-self: flex-end;
+      margin-bottom: 0.15em;
+      animation: blink 1s infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    .episode-info {
+      margin-top: 24px;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 12px;
+      color: #8c7355;
+      letter-spacing: 0.1em;
+      opacity: 0.8;
+    }
+    .live-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 16px;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 11px;
+      color: #ff3300;
+      text-shadow: 0 0 10px #ff3300, 2px 2px 4px rgba(0,0,0,0.9);
+    }
+    .live-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #ff3300;
+      animation: livePulse 1.5s infinite;
+      box-shadow: 0 0 8px #ff3300;
+    }
+    @keyframes livePulse {
+      0% { transform: scale(1); opacity: 1; box-shadow: 0 0 8px #ff3300; }
+      50% { transform: scale(1.3); opacity: 0.6; box-shadow: 0 0 16px #ff3300; }
+      100% { transform: scale(1); opacity: 1; box-shadow: 0 0 8px #ff3300; }
+    }
+    .live-indicator.live { display: inline-flex; }
+    .live-indicator:not(.live) { display: none; }
+  </style>
+</head>
+<body>
+  <div class="countdown-wrapper">
+    <div class="live-indicator" id="live-indicator">
+      <span class="live-dot"></span>
+      <span>ON AIR</span>
+    </div>
+    <div class="label">Next Shipshow in</div>
+    <div class="time" id="time-display">--:--</div>
+    <div class="episode-info" id="episode-info">E02 · First Tuesday monthly</div>
+  </div>
+
+  <script>
+    // Next episode: First Tuesday of every month, 10:00 America/Los_Angeles
+    // E02 = Nov 3, 2026 @ 10:00 PT (18:00 UTC)
+    const NEXT_SHOW_TIMESTAMP = 1793728800000;
+    const EPISODE_LABEL = "E02";
+
+    const timeDisplay = document.getElementById('time-display');
+    const episodeInfo = document.getElementById('episode-info');
+    const liveIndicator = document.getElementById('live-indicator');
+
+    function updateCountdown() {
+      const now = Date.now();
+      const diff = NEXT_SHOW_TIMESTAMP - now;
+
+      if (diff <= 0) {
+        // Show is live or past
+        timeDisplay.textContent = "LIVE";
+        timeDisplay.classList.add('minimal');
+        liveIndicator.classList.add('live');
+        episodeInfo.textContent = `${EPISODE_LABEL} · LIVE NOW`;
+        return;
+      }
+
+      liveIndicator.classList.remove('live');
+      timeDisplay.classList.remove('minimal');
+
+      const totalSeconds = Math.floor(diff / 1000);
+      const minutes = Math.floor(totalSeconds / 60);
+      const seconds = totalSeconds % 60;
+
+      // Format as MM:SS
+      const mm = String(minutes).padStart(2, '0');
+      const ss = String(seconds).padStart(2, '0');
+      
+      timeDisplay.textContent = `${mm}:${ss}`;
+      
+      if (minutes < 60) {
+        episodeInfo.textContent = `${EPISODE_LABEL} · Starts in ${minutes}m ${seconds}s`;
+      } else if (minutes < 1440) {
+        const hours = Math.floor(minutes / 60);
+        const mins = minutes % 60;
+        episodeInfo.textContent = `${EPISODE_LABEL} · Starts in ${hours}h ${mins}m`;
+      } else {
+        const days = Math.floor(minutes / 1440);
+        const hours = Math.floor((minutes % 1440) / 60);
+        episodeInfo.textContent = `${EPISODE_LABEL} · Starts in ${days}d ${hours}h`;
+      }
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // Allow dynamic override via URL params: ?epoch=1793728800000&ep=E03
+    const params = new URLSearchParams(window.location.search);
+    if (params.has('epoch')) {
+      const epoch = parseInt(params.get('epoch'), 10);
+      if (!isNaN(epoch)) {
+        Object.defineProperty(window, 'NEXT_SHOW_TIMESTAMP', { value: epoch, writable: false });
+      }
+    }
+    if (params.has('ep')) {
+      const ep = params.get('ep');
+      if (ep) {
+        document.querySelector('.episode-info').textContent = `${ep} · Starting soon...`;
+      }
+    }
+  </script>
+</body>
+</html>

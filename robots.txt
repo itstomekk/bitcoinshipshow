@@ -1,0 +1,16 @@
+# Bitcoin Shipshow — https://bitcoinship.show
+# Canonical host is bitcoinship.show (no www). Pages listed in sitemap.xml.
+
+User-agent: *
+Allow: /
+
+# the signup endpoint, click redirects and admin dashboards: crawling /gate/
+# only fills the funnel with bot traffic
+Disallow: /gate/
+
+# OBS browser-source overlays for the stream, not content
+Disallow: /blocks/
+Disallow: /countdown/
+
+Sitemap: https://bitcoinship.show/sitemap.xml
+# machine-readable digest of the show for AI answer engines: /llms.txt

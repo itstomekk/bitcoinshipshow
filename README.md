@@ -1,32 +1,85 @@
-# Bitcoin Shipshow
+<div align="center">
 
-Website of the **Bitcoin Shipshow**: a monthly online community call where builders demo what they actually ship on Bitcoin, Lightning and Nostr. First Tuesday of every month.
+# Bitcoin Shipshow ⛵
 
-Live: <https://bitcoinship.show>
+**A monthly online community call where builders demo what they actually ship on Bitcoin, Lightning and Nostr.**
 
-## What this repo is
+Live demos, not pitches. First Tuesday of every month, 13:00 ET · 19:00 CET.
 
-A mirror of the live docroot. The repo root is the web root.
+[🌐 bitcoinship.show](https://bitcoinship.show) · [ℹ️ About & FAQ](https://bitcoinship.show/about/) · [▶️ YouTube](https://www.youtube.com/@BitcoinShipshow) · [𝕏 @bitcoinshipshow](https://x.com/bitcoinshipshow) · [🟣 Nostr](https://njump.me/npub1mtjn0yp705hvgszssf2ddjpzk3zzjzgvu58dwwpkxqud0hde6fxss7cwyw) · [✉️ Say hello](mailto:hello@bitcoinship.show)
 
-- `index.php`, `partials/`, `css/`, `js/`: homepage. Markup carries semantic hooks only; designs live in `css/*.css` (current: `corsair`).
-- `about/`, `assets/`, `game/`, `sponsors/`, `privacy-policy/`, `terms-of-service/`: other pages. `/live/` is a 301 to the homepage.
-- `gate/`: PHP email gate. Visitors leave an email to unlock the page below the hero and get a calendar invite. Includes the invite mailer, reminder, calendar and click-funnel code.
-- `img/`, `robots.txt`, `sitemap.xml`, `llms.txt`: assets and crawler files.
-- `tests/`: checks for the stream embed.
+<br>
 
-## Not in this repo
+<a href="https://bitcoinship.show"><img src=".github/readme/home.jpg" alt="The bitcoinship.show homepage: the Bitcoin Shipshow wordmark, an email sign-up, a countdown to the next expedition and the guest strip" width="820"></a>
 
-- `gate/config.php` (room link, admin token, HMAC secret, Google OAuth). See `gate/config.example.php` for the shape.
-- `gate/data/` (signups and click logs).
+</div>
 
-## Running it
+---
 
-PHP 8.x. Copy `gate/config.example.php` to `gate/config.php`, fill it in, make `gate/data/` writable. Without a config the gate will not load.
+## 👋 Ahoy!
 
-## Deploy
+Bitcoin Shipshow is part TV show, part community call. Every month a few builders share their screen and show something that really runs: a wallet, a Lightning tool, a Nostr client, a film, a map, a music app. Early and unknown projects stand next to one project with a fresh release. Working demos only, alpha and beta welcome, no slideware, no price talk.
 
-Production runs on shared hosting (cPanel) and is deployed by script from a local working copy, not from this repo. This repo is a copy for reading, review and contributions.
+It is free to watch and free to demo. It is independent and community-run: the hosts pick every slot, and tips and zaps on the stream go to the people building.
 
-## Brand assets
+This repository is the code of the website. If you landed here by accident: **[open the site](https://bitcoinship.show)** and leave your email to get the invite. 🧡
 
-Logos, wordmarks and posters: `assets/downloads/bitcoin-shipshow-brand.zip`.
+## 🚦 Where we are
+
+| | |
+|---|---|
+| 🟢 **Status** | **Live.** The site is running and the show has started. Expedition 01 aired on Tue 6 Oct 2026, its replay is on YouTube. |
+| 🗓️ **Next** | Expedition 02, Tue 3 Nov 2026, 13:00 ET · 19:00 CET. The line-up is on the [homepage](https://bitcoinship.show). |
+| 🔁 **Rhythm** | First Tuesday of every month, about 90 minutes public and streamed, then about 30 minutes off the record in the room. |
+
+## 🎬 How the show works
+
+1. **Watch.** The stream is public and every expedition is published afterwards as a full episode plus clips on [YouTube](https://www.youtube.com/@BitcoinShipshow). Follow `#bitcoinshipshow`.
+2. **Join the room.** Leave your email on [bitcoinship.show](https://bitcoinship.show). The invite with a calendar entry arrives in your inbox. The room link is never posted on the public site.
+3. **Demo.** Three to five demos per expedition, plus one slot kept for a project with no partner behind it.
+
+## 🛠️ Want to demo?
+
+Yes please. Early and unknown is exactly what we want. If it runs, even roughly, it is ready.
+
+1. Leave your email on the [front page](https://bitcoinship.show).
+2. When the invite arrives, reply and tell us what you are building.
+3. Or just turn up to a show and introduce yourself in the room.
+
+Questions first? Write to [hello@bitcoinship.show](mailto:hello@bitcoinship.show). More answers are in the [FAQ](https://bitcoinship.show/about/).
+
+## 🤝 Want to help with the site?
+
+The site is a plain PHP project. Good first contributions:
+
+- 🐛 A bug, a broken link or a layout problem on a phone: [open an issue](https://github.com/itstomekk/bitcoinshipshow/issues).
+- ✏️ A typo or a clearer sentence: open a pull request.
+- 💡 An idea for the show or the site: open an issue, or write to [hello@bitcoinship.show](mailto:hello@bitcoinship.show).
+
+Production is deployed by script from a separate working copy, not from this repo, so a merged pull request is applied there by a maintainer before it goes live. Never put secrets, signup data or personal emails in an issue or a PR.
+
+Build, run and layout notes are in [DEVELOPMENT.md](DEVELOPMENT.md).
+
+## 📍 Find us
+
+| | |
+|---|---|
+| 🌐 Website | [bitcoinship.show](https://bitcoinship.show) |
+| ▶️ Replays | [youtube.com/@BitcoinShipshow](https://www.youtube.com/@BitcoinShipshow) |
+| 𝕏 X | [@bitcoinshipshow](https://x.com/bitcoinshipshow) |
+| 🟣 Nostr | [npub1mtjn0y…de6fxss7cwyw](https://njump.me/npub1mtjn0yp705hvgszssf2ddjpzk3zzjzgvu58dwwpkxqud0hde6fxss7cwyw) |
+| ⚡ Zaps | `ahoy@bitcoinship.show` (Lightning address) |
+| ✉️ Contact | [hello@bitcoinship.show](mailto:hello@bitcoinship.show) |
+| 🎨 Brand kit | [bitcoinship.show/assets](https://bitcoinship.show/assets/), logos, colours, type and posters for talking about the show |
+
+## 📜 Licence
+
+This repository has no licence file yet, so the code is not licensed for reuse. Ask first. The brand kit is free to use when you talk about the show.
+
+---
+
+<div align="center">
+
+**Show us what you're building.** ⚡ Fair winds. ⛵
+
+</div>

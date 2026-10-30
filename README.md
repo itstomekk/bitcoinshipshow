@@ -1,8 +1,10 @@
 <div align="center">
 
-# Bitcoin Shipshow ⛵
+# Bitcoin Shipshow, the website ⛵
 
-**A monthly online community call where builders demo what they actually ship on Bitcoin, Lightning and Nostr.**
+**The source of [bitcoinship.show](https://bitcoinship.show), the website of Bitcoin Shipshow.**
+
+Shipshow is a monthly online community call where builders demo what they actually ship on Bitcoin, Lightning and Nostr.
 
 Live demos, not pitches. First Tuesday of every month, 13:00 ET · 19:00 CET.
 
@@ -22,7 +24,7 @@ Bitcoin Shipshow is part TV show, part community call. Every month a few builder
 
 It is free to watch and free to demo. It is independent and community-run: the hosts pick every slot, and tips and zaps on the stream go to the people building.
 
-This repository is the code of the website. If you landed here by accident: **[open the site](https://bitcoinship.show)** and leave your email to get the invite. 🧡
+**This repository is the code of the website [bitcoinship.show](https://bitcoinship.show)**, nothing else. Plans, decisions and episode files live in a separate private repo. If you landed here by accident: **[open the site](https://bitcoinship.show)** and leave your email to get the invite. 🧡
 
 ## 🚦 Where we are
 
@@ -52,7 +54,7 @@ Questions first? Write to [hello@bitcoinship.show](mailto:hello@bitcoinship.show
 
 The site is a plain PHP project. Good first contributions:
 
-- 🐛 A bug, a broken link or a layout problem on a phone: [open an issue](https://github.com/itstomekk/bitcoinshipshow/issues).
+- 🐛 A bug, a broken link or a layout problem on a phone: [open an issue](https://github.com/Bitcoin-ShipShow/bitcoinshipshow-com/issues).
 - ✏️ A typo or a clearer sentence: open a pull request.
 - 💡 An idea for the show or the site: open an issue, or write to [hello@bitcoinship.show](mailto:hello@bitcoinship.show).
 

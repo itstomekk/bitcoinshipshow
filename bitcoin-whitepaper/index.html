@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bitcoin White Paper: A Peer-to-Peer Electronic Cash System · Bitcoin Shipshow</title>
+<meta name="description" content="The Bitcoin white paper by Satoshi Nakamoto, in full: 18 years since it was sent on 31 October 2008. Read it here or download the original PDF.">
+<link rel="canonical" href="https://bitcoinship.show/bitcoin-whitepaper/">
+<link rel="alternate" type="text/markdown" href="https://bitcoinship.show/bitcoin-whitepaper/index.md">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#061726">
+
+<!-- Open Graph / Twitter card, same set as the other public pages -->
+<meta property="og:title" content="Bitcoin White Paper: Bitcoin: A Peer-to-Peer Electronic Cash System">
+<meta property="og:description" content="The Bitcoin white paper by Satoshi Nakamoto, in full: 18 years since it was sent on 31 October 2008. Read it here or download the original PDF.">
+<meta property="og:image" content="https://bitcoinship.show/img/whitepaper-18-og.jpg">
+<meta property="og:image:secure_url" content="https://bitcoinship.show/img/whitepaper-18-og.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Anniversary graphic: 18 years of the Bitcoin white paper, 31.10.2008 to 31.10.2026, with a birthday cake and a page of the paper. Full text online, PDF to download.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://bitcoinship.show/bitcoin-whitepaper/">
+<meta property="og:site_name" content="Bitcoin Shipshow">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2008-10-31">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@bitcoinshipshow">
+<meta name="twitter:title" content="Bitcoin White Paper: Bitcoin: A Peer-to-Peer Electronic Cash System">
+<meta name="twitter:description" content="The Bitcoin white paper by Satoshi Nakamoto, in full: 18 years since it was sent on 31 October 2008. Read it here or download the original PDF.">
+<meta name="twitter:image" content="https://bitcoinship.show/img/whitepaper-18-og.jpg">
+<meta name="twitter:image:alt" content="Anniversary graphic: 18 years of the Bitcoin white paper, 31.10.2008 to 31.10.2026, with a birthday cake and a page of the paper. Full text online, PDF to download.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Bitcoin: A Peer-to-Peer Electronic Cash System", "description": "The Bitcoin white paper by Satoshi Nakamoto, in full: 18 years since it was sent on 31 October 2008. Read it here or download the original PDF.", "inLanguage": "en", "datePublished": "2008-10-31", "author": {"@type": "Person", "name": "Satoshi Nakamoto"}, "publisher": {"@type": "Organization", "name": "Bitcoin Shipshow", "url": "https://bitcoinship.show/"}, "mainEntityOfPage": "https://bitcoinship.show/bitcoin-whitepaper/", "image": "https://bitcoinship.show/img/whitepaper-18-og.jpg", "encoding": {"@type": "MediaObject", "contentUrl": "https://bitcoinship.show/bitcoin.pdf", "encodingFormat": "application/pdf", "contentSize": "184292", "sha256": "b1674191a88ec5cdd733e4240a81803105dc412d6c6708d53ab94fc248f4f553"}}</script>
+<style>
+  @font-face{font-family:"Pirata One";font-weight:400;font-style:normal;font-display:swap;
+    src:url("/game/assets/PirataOne-Regular.ttf") format("truetype")}
+  :root{
+    --co-sea:#061726; --co-sea-mid:#0C2E4A; --co-sea-lite:#14486F; --co-ink:#0B1F33;
+    --co-parch:#CBDCE8; --co-parch-dk:#A9C3D6; --co-gold:#D9AE3C; --co-blood:#1E6FA6;
+    --co-foxing:
+      radial-gradient(ellipse at 12% 18%, rgba(30,78,120,.18), transparent 46%),
+      radial-gradient(ellipse at 88% 72%, rgba(30,78,120,.15), transparent 42%),
+      radial-gradient(ellipse at 62% 8%, rgba(20,55,90,.12), transparent 38%);
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+  body{margin:0;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;
+    background:linear-gradient(rgba(6,23,38,.80),rgba(6,23,38,.80)),url("/img/sea-water.jpg") center / cover no-repeat fixed;
+    background-color:var(--co-sea);color:var(--co-parch);
+    font-family:"IM Fell English",Georgia,serif;line-height:1.5}
+  @media (max-width:760px),(prefers-reduced-motion:reduce){body{background-attachment:scroll;scroll-behavior:auto}}
+  a{color:inherit}
+
+  /* top strip: badge + PDF button, as on the site's other pages */
+  .top{width:100%;max-width:848px;margin:0 auto;padding:26px 14px 6px;display:flex;flex-wrap:wrap;
+    align-items:center;justify-content:space-between;gap:12px 18px}
+  .kicker{display:inline-block;padding:5px 12px;background:var(--co-blood);color:var(--co-parch);
+    border:2px solid var(--co-gold);font-size:12px;letter-spacing:.26em;text-transform:uppercase}
+  .btn{display:inline-block;padding:9px 20px 6px;background:var(--co-gold);color:var(--co-ink);
+    border:3px solid var(--co-ink);box-shadow:5px 5px 0 0 var(--co-sea-lite);text-decoration:none;
+    font-family:"Pirata One",serif;font-size:22px;letter-spacing:.04em;white-space:nowrap}
+  .btn:hover,.btn:focus-visible{background:var(--co-parch);transform:translate(-2px,-2px)}
+
+  main{flex:1;width:100%;padding:14px 14px 44px}
+
+  /* the paper: a parchment sheet on the sea */
+  .wp{max-width:820px;margin:0 auto;padding:44px clamp(20px,6vw,64px) 52px;
+    background:var(--co-parch);background-image:var(--co-foxing);color:var(--co-ink);
+    border:2px solid var(--co-gold);box-shadow:10px 10px 0 0 var(--co-sea);
+    font-size:clamp(17.5px,2.1vw,20px);line-height:1.62;overflow-wrap:break-word;hyphens:auto}
+  .wp > *{max-width:70ch;margin-left:auto;margin-right:auto}
+  .wp-paper{max-width:none !important}
+  .wp-paper > *{max-width:70ch;margin-left:auto;margin-right:auto}
+
+  .anniv{text-align:center;margin:0 auto 1.1em}
+  .anniv .num{font-family:"Pirata One",serif;font-size:clamp(48px,10vw,76px);line-height:.85;color:var(--co-blood);
+    text-shadow:3px 3px 0 var(--co-ink)}
+  .anniv .cap{display:block;margin-top:.3em;font-size:.72em;letter-spacing:.24em;text-transform:uppercase;color:var(--co-ink)}
+  .lede{font-size:1.04em;font-style:italic;text-align:center;margin:0 auto 1.4em;max-width:56ch}
+
+  .wp h1{font-family:"Pirata One",serif;font-weight:400;text-transform:uppercase;text-align:center;
+    font-size:clamp(32px,7.2vw,58px);line-height:.98;letter-spacing:.01em;margin:.2em auto 14px}
+  .wp-author{text-align:center;margin:0 auto 1.3em}
+  .wp h2{font-family:"Pirata One",serif;font-weight:400;font-size:clamp(28px,4.6vw,36px);line-height:1;
+    margin:2.1em auto .5em;padding-bottom:.18em;border-bottom:3px solid var(--co-gold);scroll-margin-top:14px}
+  .wp p{margin-top:0;margin-bottom:1em}
+  .wp a{color:var(--co-sea-lite);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;overflow-wrap:anywhere}
+  .wp a:hover{color:var(--co-blood)}
+  .wp a,.wp-refs,.wp-pre{hyphens:none;-webkit-hyphens:none}
+  .wp ol,.wp ul{padding-left:1.5em;margin-top:0;margin-bottom:1em}
+  .wp li{margin-bottom:.5em}
+  .wp-abstract{padding:14px 18px;background:rgba(255,255,255,.35);border-left:4px solid var(--co-gold);font-size:.96em;margin-bottom:1.6em}
+  .wp-cite{text-decoration:none !important;white-space:nowrap}
+  .wp-steps{list-style:decimal}
+
+  /* PDF card: ink plate, gold hairline, the site's hard shadow */
+  .pdfcard{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px 20px;
+    background:var(--co-ink);color:var(--co-parch);border:2px solid var(--co-gold);
+    box-shadow:6px 6px 0 0 var(--co-sea-lite);padding:16px 20px;margin-top:1.4em;margin-bottom:1.6em;font-size:.82em}
+  .pdfcard__txt{display:flex;flex-direction:column;gap:3px;min-width:0}
+  .pdfcard__k{font-family:"Pirata One",serif;font-size:1.7em;line-height:1;color:var(--co-gold)}
+  .pdfcard__v{letter-spacing:.04em}
+  .pdfcard__h{font-size:.9em;color:var(--co-parch);opacity:.9;cursor:help;letter-spacing:.06em}
+  .pdfcard .btn{border-color:var(--co-gold);box-shadow:4px 4px 0 0 var(--co-sea-lite)}
+  .wp .pdfcard .btn{color:var(--co-ink);text-decoration:none}
+
+  /* table of contents: gold-ruled chips */
+  .toc-wrap{margin-bottom:1.8em}
+  .toc-wrap h2{margin-top:0;font-size:clamp(24px,4vw,30px)}
+  .wp-toc{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 14px}
+  .wp-toc a{display:block;padding:5px 11px 4px;border:2px solid var(--co-ink);background:rgba(255,255,255,.35);
+    color:var(--co-ink);text-decoration:none;font-size:.84em;box-shadow:3px 3px 0 0 var(--co-sea-mid)}
+  .wp .wp-toc a:hover,.wp .wp-toc a:focus-visible{background:var(--co-gold);color:var(--co-ink)}
+  .wp-toc a:last-child{grid-column:1/-1}
+  @media (max-width:520px){.wp-toc{grid-template-columns:1fr}}
+
+  /* figures: black-on-white drawings sit on a white plate */
+  .wp-fig{margin:1.8em auto;text-align:center}
+  .wp-fig img{display:block;max-width:100%;height:auto;margin:0 auto;background:#fff;padding:12px;
+    border:2px solid var(--co-ink);box-shadow:5px 5px 0 0 var(--co-sea-mid)}
+
+  /* equations, code, definitions, references */
+  .wp-eq{margin:1.2em auto;text-align:center;overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}
+  .wp math[display="block"]{display:block;margin:0 auto;font-size:1.12em;max-width:100%;overflow-x:auto;overflow-y:hidden}
+  .wp-defs{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;margin:0 auto 1em}
+  .wp-defs dt{font-style:italic;text-align:right}
+  .wp-defs dd{margin:0}
+  .wp-pre{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;padding:14px 16px;
+    background:rgba(255,255,255,.55);border:2px solid var(--co-ink);line-height:1.45;margin:1.4em auto;
+    font-family:"Courier New",Courier,monospace;font-size:.78em;hyphens:none}
+  .wp-pre code{font-family:inherit}
+  .wp-refs{font-size:.92em;padding-left:0;list-style:none}
+  .wp-refs li{padding-left:2.4em;text-indent:-2.4em}
+  .wp-ref-n{display:inline-block;width:2.1em;text-indent:0;font-style:italic}
+  .wp-ref-n + *{text-indent:0}
+
+  /* Polish reading version: one quiet line */
+  .wp-pl{margin-top:2.2em;padding-top:1em;border-top:2px dashed var(--co-gold);font-size:.88em;text-align:center}
+
+  /* slim footer bar: the site footer's own gold rule on ink */
+  .thanks{flex:none;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;
+    gap:6px 22px;padding:10px 18px 11px;background:var(--co-ink);color:var(--co-parch);
+    border-top:4px solid var(--co-gold);font-size:14px;text-align:center}
+  .thanks .say{display:flex;align-items:baseline;flex-wrap:wrap;justify-content:center;gap:2px 12px}
+  .thanks .big{font-family:"Pirata One",serif;font-size:24px;line-height:1;color:var(--co-gold);letter-spacing:.02em;white-space:nowrap}
+  .thanks .line{font-style:italic}
+  .thanks .meta{display:flex;align-items:center;flex-wrap:wrap;justify-content:center;gap:4px 18px;
+    font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+  .thanks a{color:var(--co-gold);text-decoration:none;border-bottom:2px dashed var(--co-gold)}
+  .thanks a:hover,.thanks a:focus-visible{color:var(--co-parch);border-bottom-style:solid}
+  .thanks a.home{color:var(--co-parch-dk);border-bottom-color:transparent;opacity:.85}
+  .thanks a.home:hover,.thanks a.home:focus-visible{color:var(--co-gold);border-bottom-color:var(--co-gold);opacity:1}
+  @media (max-width:640px){
+    .top{padding:18px 8px 4px}
+    main{padding:12px 8px 32px}
+    .wp{padding:30px 16px 38px;box-shadow:6px 6px 0 0 var(--co-sea)}
+    .pdfcard{padding:14px 14px}
+    .thanks{font-size:13px;gap:4px 14px;padding:8px 12px 9px}
+    .thanks .big{font-size:22px}
+    .thanks .meta{font-size:11px;gap:3px 14px}
+  }
+</style>
+</head>
+<body>
+<div class="top">
+  <span class="kicker">White paper &middot; 31 Oct 2008</span>
+  <a class="btn" href="/bitcoin.pdf" download>Download PDF</a>
+</div>
+<main>
+<article class="wp" lang="en">
+<div class="anniv"><span class="num">18</span><span class="cap">years since 31 October 2008</span></div>
+<p class="lede">On 31 October 2008, Satoshi Nakamoto sent this nine-page paper to a cryptography mailing list. Eighteen years later it still reads as plain as the day it went out. Here it is in full, unedited, on the site of a monthly live show where builders demo what they ship on Bitcoin.</p>
+<div class="wp-paper" lang="en"><header class="wp-head"><h1 class="wp-title">Bitcoin: A Peer-to-Peer Electronic Cash System</h2><p class="wp-author">Satoshi Nakamoto<br>satoshin@gmx.com<br><a href="https://www.bitcoin.org" rel="noopener">www.bitcoin.org</a></p></header>
+<aside class="pdfcard">
+  <div class="pdfcard__txt">
+    <span class="pdfcard__k">The original paper</span>
+    <span class="pdfcard__v">bitcoin.pdf &middot; 9 pages &middot; 180&nbsp;KB &middot; unmodified</span>
+    <span class="pdfcard__h" title="SHA-256 b1674191a88ec5cdd733e4240a81803105dc412d6c6708d53ab94fc248f4f553">SHA-256 b1674191&hellip;f553</span>
+  </div>
+  <a class="btn" href="/bitcoin.pdf" download>Download PDF</a>
+</aside>
+<div class="toc-wrap"><h2>Contents</h2><nav class="toc wp-toc" aria-label="Contents"><a href="#section-1">1. Introduction</a><a href="#section-2">2. Transactions</a><a href="#section-3">3. Timestamp Server</a><a href="#section-4">4. Proof-of-Work</a><a href="#section-5">5. Network</a><a href="#section-6">6. Incentive</a><a href="#section-7">7. Reclaiming Disk Space</a><a href="#section-8">8. Simplified Payment Verification</a><a href="#section-9">9. Combining and Splitting Value</a><a href="#section-10">10. Privacy</a><a href="#section-11">11. Calculations</a><a href="#section-12">12. Conclusion</a><a href="#references">References</a></nav></div>
+<p class="wp-abstract"><strong>Abstract.</strong> A purely peer-to-peer version of electronic cash would allow online payments to be sent directly from one party to another without going through a financial institution. Digital signatures provide part of the solution, but the main benefits are lost if a trusted third party is still required to prevent double-spending. We propose a solution to the double-spending problem using a peer-to-peer network. The network timestamps transactions by hashing them into an ongoing chain of hash-based proof-of-work, forming a record that cannot be changed without redoing the proof-of-work. The longest chain not only serves as proof of the sequence of events witnessed, but proof that it came from the largest pool of CPU power. As long as a majority of CPU power is controlled by nodes that are not cooperating to attack the network, they&#x27;ll generate the longest chain and outpace attackers. The network itself requires minimal structure. Messages are broadcast on a best effort basis, and nodes can leave and rejoin the network at will, accepting the longest proof-of-work chain as proof of what happened while they were gone.</p><section class="wp-sec" id="section-1"><h2>1. Introduction</h2><p>Commerce on the Internet has come to rely almost exclusively on financial institutions serving as trusted third parties to process electronic payments. While the system works well enough for most transactions, it still suffers from the inherent weaknesses of the trust based model. Completely non-reversible transactions are not really possible, since financial institutions cannot avoid mediating disputes. The cost of mediation increases transaction costs, limiting the minimum practical transaction size and cutting off the possibility for small casual transactions, and there is a broader cost in the loss of ability to make non-reversible payments for non-reversible services. With the possibility of reversal, the need for trust spreads. Merchants must be wary of their customers, hassling them for more information than they would otherwise need. A certain percentage of fraud is accepted as unavoidable. These costs and payment uncertainties can be avoided in person by using physical currency, but no mechanism exists to make payments over a communications channel without a trusted party.</p><p>What is needed is an electronic payment system based on cryptographic proof instead of trust, allowing any two willing parties to transact directly with each other without the need for a trusted third party. Transactions that are computationally impractical to reverse would protect sellers from fraud, and routine escrow mechanisms could easily be implemented to protect buyers. In this paper, we propose a solution to the double-spending problem using a peer-to-peer distributed timestamp server to generate computational proof of the chronological order of transactions. The system is secure as long as honest nodes collectively control more CPU power than any cooperating group of attacker nodes.</p></section><section class="wp-sec" id="section-2"><h2>2. Transactions</h2><p>We define an electronic coin as a chain of digital signatures. Each owner transfers the coin to the next by digitally signing a hash of the previous transaction and the public key of the next owner and adding these to the end of the coin. A payee can verify the signatures to verify the chain of ownership.</p><figure class="wp-fig"><img src="/bitcoin-whitepaper/figures/transactions-en.png" width="369" height="240" alt="Diagram of a chain of transactions. Each owner signs with their private key the hash of the previous transaction together with the next owner&#x27;s public key. The signature is verified with the previous owner&#x27;s public key." loading="lazy"></figure><p>The problem of course is the payee can&#x27;t verify that one of the owners did not double-spend the coin. A common solution is to introduce a trusted central authority, or mint, that checks every transaction for double spending. After each transaction, the coin must be returned to the mint to issue a new coin, and only coins issued directly from the mint are trusted not to be double-spent. The problem with this solution is that the fate of the entire money system depends on the company running the mint, with every transaction having to go through them, just like a bank.</p><p>We need a way for the payee to know that the previous owners did not sign any earlier transactions. For our purposes, the earliest transaction is the one that counts, so we don&#x27;t care about later attempts to double-spend. The only way to confirm the absence of a transaction is to be aware of all transactions. In the mint based model, the mint was aware of all transactions and decided which arrived first. To accomplish this without a trusted party, transactions must be publicly announced <a class="wp-cite" href="#ref-1">[1]</a>, and we need a system for participants to agree on a single history of the order in which they were received. The payee needs proof that at the time of each transaction, the majority of nodes agreed it was the first received.</p></section><section class="wp-sec" id="section-3"><h2>3. Timestamp Server</h2><p>The solution we propose begins with a timestamp server. A timestamp server works by taking a hash of a block of items to be timestamped and widely publishing the hash, such as in a newspaper or Usenet post <a class="wp-cite" href="#ref-2">[2-5]</a>. The timestamp proves that the data must have existed at the time, obviously, in order to get into the hash. Each timestamp includes the previous timestamp in its hash, forming a chain, with each additional timestamp reinforcing the ones before it.</p><figure class="wp-fig"><img src="/bitcoin-whitepaper/figures/timestamp-en.png" width="309" height="102" alt="A chain of timestamps. The hash of a block of items is published, and each block contains the hash of the previous one." loading="lazy"></figure></section><section class="wp-sec" id="section-4"><h2>4. Proof-of-Work</h2><p>To implement a distributed timestamp server on a peer-to-peer basis, we will need to use a proof-of-work system similar to Adam Back&#x27;s Hashcash <a class="wp-cite" href="#ref-6">[6]</a>, rather than newspaper or Usenet posts. The proof-of-work involves scanning for a value that when hashed, such as with SHA-256, the hash begins with a number of zero bits. The average work required is exponential in the number of zero bits required and can be verified by executing a single hash.</p><p>For our timestamp network, we implement the proof-of-work by incrementing a nonce in the block until a value is found that gives the block&#x27;s hash the required zero bits. Once the CPU effort has been expended to make it satisfy the proof-of-work, the block cannot be changed without redoing the work. As later blocks are chained after it, the work to change the block would include redoing all the blocks after it.</p><figure class="wp-fig"><img src="/bitcoin-whitepaper/figures/pow-en.png" width="331" height="95" alt="Two blocks linked in a chain. Each block holds the previous block&#x27;s hash, a nonce and transactions." loading="lazy"></figure><p>The proof-of-work also solves the problem of determining representation in majority decision making. If the majority were based on one-IP-address-one-vote, it could be subverted by anyone able to allocate many IPs. Proof-of-work is essentially one-CPU-one-vote. The majority decision is represented by the longest chain, which has the greatest proof-of-work effort invested in it. If a majority of CPU power is controlled by honest nodes, the honest chain will grow the fastest and outpace any competing chains. To modify a past block, an attacker would have to redo the proof-of-work of the block and all blocks after it and then catch up with and surpass the work of the honest nodes. We will show later that the probability of a slower attacker catching up diminishes exponentially as subsequent blocks are added.</p><p>To compensate for increasing hardware speed and varying interest in running nodes over time, the proof-of-work difficulty is determined by a moving average targeting an average number of blocks per hour. If they&#x27;re generated too fast, the difficulty increases.</p></section><section class="wp-sec" id="section-5"><h2>5. Network</h2><p>The steps to run the network are as follows:</p><ol class="wp-steps"><li>New transactions are broadcast to all nodes.</li><li>Each node collects new transactions into a block.</li><li>Each node works on finding a difficult proof-of-work for its block.</li><li>When a node finds a proof-of-work, it broadcasts the block to all nodes.</li><li>Nodes accept the block only if all transactions in it are valid and not already spent.</li><li>Nodes express their acceptance of the block by working on creating the next block in the chain, using the hash of the accepted block as the previous hash.</li></ol><p>Nodes always consider the longest chain to be the correct one and will keep working on extending it. If two nodes broadcast different versions of the next block simultaneously, some nodes may receive one or the other first. In that case, they work on the first one they received, but save the other branch in case it becomes longer. The tie will be broken when the next proof-of-work is found and one branch becomes longer; the nodes that were working on the other branch will then switch to the longer one.</p><p>New transaction broadcasts do not necessarily need to reach all nodes. As long as they reach many nodes, they will get into a block before long. Block broadcasts are also tolerant of dropped messages. If a node does not receive a block, it will request it when it receives the next block and realizes it missed one.</p></section><section class="wp-sec" id="section-6"><h2>6. Incentive</h2><p>By convention, the first transaction in a block is a special transaction that starts a new coin owned by the creator of the block. This adds an incentive for nodes to support the network, and provides a way to initially distribute coins into circulation, since there is no central authority to issue them. The steady addition of a constant of amount of new coins is analogous to gold miners expending resources to add gold to circulation. In our case, it is CPU time and electricity that is expended.</p><p>The incentive can also be funded with transaction fees. If the output value of a transaction is less than its input value, the difference is a transaction fee that is added to the incentive value of the block containing the transaction. Once a predetermined number of coins have entered circulation, the incentive can transition entirely to transaction fees and be completely inflation free.</p><p>The incentive may help encourage nodes to stay honest. If a greedy attacker is able to assemble more CPU power than all the honest nodes, he would have to choose between using it to defraud people by stealing back his payments, or using it to generate new coins. He ought to find it more profitable to play by the rules, such rules that favour him with more new coins than everyone else combined, than to undermine the system and the validity of his own wealth.</p></section><section class="wp-sec" id="section-7"><h2>7. Reclaiming Disk Space</h2><p>Once the latest transaction in a coin is buried under enough blocks, the spent transactions before it can be discarded to save disk space. To facilitate this without breaking the block&#x27;s hash, transactions are hashed in a Merkle Tree <a class="wp-cite" href="#ref-7">[7]</a><a class="wp-cite" href="#ref-2">[2]</a><a class="wp-cite" href="#ref-5">[5]</a>, with only the root included in the block&#x27;s hash. Old blocks can then be compacted by stubbing off branches of the tree. The interior hashes do not need to be stored.</p><figure class="wp-fig"><img src="/bitcoin-whitepaper/figures/merkle-en.png" width="453" height="256" alt="On the left, transactions Tx0 to Tx3 hashed in a Merkle tree, with the root in the block header. On the right, the same tree after pruning Tx0 to Tx2: only the hashes needed for Tx3 remain." loading="lazy"></figure><p>A block header with no transactions would be about 80 bytes. If we suppose blocks are generated every 10 minutes, 80 bytes * 6 * 24 * 365 = 4.2MB per year. With computer systems typically selling with 2GB of RAM as of 2008, and Moore&#x27;s Law predicting current growth of 1.2GB per year, storage should not be a problem even if the block headers must be kept in memory.</p></section><section class="wp-sec" id="section-8"><h2>8. Simplified Payment Verification</h2><p>It is possible to verify payments without running a full network node. A user only needs to keep a copy of the block headers of the longest proof-of-work chain, which he can get by querying network nodes until he&#x27;s convinced he has the longest chain, and obtain the Merkle branch linking the transaction to the block it&#x27;s timestamped in. He can&#x27;t check the transaction for himself, but by linking it to a place in the chain, he can see that a network node has accepted it, and blocks added after it further confirm the network has accepted it.</p><figure class="wp-fig"><img src="/bitcoin-whitepaper/figures/spv-en.png" width="535" height="247" alt="The longest proof-of-work chain: three block headers with the previous hash, nonce and Merkle root. A Merkle branch links transaction Tx3 to the root of one block." loading="lazy"></figure><p>As such, the verification is reliable as long as honest nodes control the network, but is more vulnerable if the network is overpowered by an attacker. While network nodes can verify transactions for themselves, the simplified method can be fooled by an attacker&#x27;s fabricated transactions for as long as the attacker can continue to overpower the network. One strategy to protect against this would be to accept alerts from network nodes when they detect an invalid block, prompting the user&#x27;s software to download the full block and alerted transactions to confirm the inconsistency. Businesses that receive frequent payments will probably still want to run their own nodes for more independent security and quicker verification.</p></section><section class="wp-sec" id="section-9"><h2>9. Combining and Splitting Value</h2><p>Although it would be possible to handle coins individually, it would be unwieldy to make a separate transaction for every cent in a transfer. To allow value to be split and combined, transactions contain multiple inputs and outputs. Normally there will be either a single input from a larger previous transaction or multiple inputs combining smaller amounts, and at most two outputs: one for the payment, and one returning the change, if any, back to the sender.</p><figure class="wp-fig"><img src="/bitcoin-whitepaper/figures/split-en.png" width="108" height="115" alt="A transaction with several inputs and outputs." loading="lazy"></figure><p>It should be noted that fan-out, where a transaction depends on several transactions, and those transactions depend on many more, is not a problem here. There is never the need to extract a complete standalone copy of a transaction&#x27;s history.</p></section><section class="wp-sec" id="section-10"><h2>10. Privacy</h2><p>The traditional banking model achieves a level of privacy by limiting access to information to the parties involved and the trusted third party. The necessity to announce all transactions publicly precludes this method, but privacy can still be maintained by breaking the flow of information in another place: by keeping public keys anonymous. The public can see that someone is sending an amount to someone else, but without information linking the transaction to anyone. This is similar to the level of information released by stock exchanges, where the time and size of individual trades, the &quot;tape&quot;, is made public, but without telling who the parties were.</p><figure class="wp-fig"><img src="/bitcoin-whitepaper/figures/privacy-en.png" width="459" height="149" alt="Two privacy models. In the traditional one, identities, transactions, a trusted third party and the counterparty are kept apart from the public. In the new one the public sees the transactions, but not the identities." loading="lazy"></figure><p>As an additional firewall, a new key pair should be used for each transaction to keep them from being linked to a common owner. Some linking is still unavoidable with multi-input transactions, which necessarily reveal that their inputs were owned by the same owner. The risk is that if the owner of a key is revealed, linking could reveal other transactions that belonged to the same owner.</p></section><section class="wp-sec" id="section-11"><h2>11. Calculations</h2><p>We consider the scenario of an attacker trying to generate an alternate chain faster than the honest chain. Even if this is accomplished, it does not throw the system open to arbitrary changes, such as creating value out of thin air or taking money that never belonged to the attacker. Nodes are not going to accept an invalid transaction as payment, and honest nodes will never accept a block containing them. An attacker can only try to change one of his own transactions to take back money he recently spent.</p><p>The race between the honest chain and an attacker chain can be characterized as a Binomial Random Walk. The success event is the honest chain being extended by one block, increasing its lead by +1, and the failure event is the attacker&#x27;s chain being extended by one block, reducing the gap by -1.</p><p>The probability of an attacker catching up from a given deficit is analogous to a Gambler&#x27;s Ruin problem. Suppose a gambler with unlimited credit starts at a deficit and plays potentially an infinite number of trials to try to reach breakeven. We can calculate the probability he ever reaches breakeven, or that an attacker ever catches up with the honest chain, as follows <a class="wp-cite" href="#ref-8">[8]</a>:</p><dl class="wp-defs"><dt><var>p</var></dt><dd>probability an honest node finds the next block</dd><dt><var>q</var></dt><dd>probability the attacker finds the next block</dd><dt><var>q</var><sub><var>z</var></sub></dt><dd>probability the attacker will ever catch up from z blocks behind</dd></dl><div class="wp-eq"><math display="block" alttext="q_z = 1 if p ≤ q; (q/p)^z if p &gt; q"><msub><mi>q</mi><mi>z</mi></msub><mo>=</mo><mrow><mo>{</mo><mtable columnalign="left left"><mtr><mtd><mn>1</mn></mtd><mtd><mtext>if&#160;</mtext><mi>p</mi><mo>&#8804;</mo><mi>q</mi></mtd></mtr><mtr><mtd><msup><mrow><mo>(</mo><mfrac><mi>q</mi><mi>p</mi></mfrac><mo>)</mo></mrow><mi>z</mi></msup></mtd><mtd><mtext>if&#160;</mtext><mi>p</mi><mo>&gt;</mo><mi>q</mi></mtd></mtr></mtable></mrow></math></div><p>Given our assumption that p &gt; q, the probability drops exponentially as the number of blocks the attacker has to catch up with increases. With the odds against him, if he doesn&#x27;t make a lucky lunge forward early on, his chances become vanishingly small as he falls further behind.</p><p>We now consider how long the recipient of a new transaction needs to wait before being sufficiently certain the sender can&#x27;t change the transaction. We assume the sender is an attacker who wants to make the recipient believe he paid him for a while, then switch it to pay back to himself after some time has passed. The receiver will be alerted when that happens, but the sender hopes it will be too late.</p><p>The receiver generates a new key pair and gives the public key to the sender shortly before signing. This prevents the sender from preparing a chain of blocks ahead of time by working on it continuously until he is lucky enough to get far enough ahead, then executing the transaction at that moment. Once the transaction is sent, the dishonest sender starts working in secret on a parallel chain containing an alternate version of his transaction.</p><p>The recipient waits until the transaction has been added to a block and z blocks have been linked after it. He doesn&#x27;t know the exact amount of progress the attacker has made, but assuming the honest blocks took the average expected time per block, the attacker&#x27;s potential progress will be a Poisson distribution with expected value:</p><div class="wp-eq"><math display="block" alttext="lambda = z q/p"><mi>&#955;</mi><mo>=</mo><mi>z</mi><mfrac><mi>q</mi><mi>p</mi></mfrac></math></div><p>To get the probability the attacker could still catch up now, we multiply the Poisson density for each amount of progress he could have made by the probability he could catch up from that point:</p><div class="wp-eq"><math display="block" alttext="sum for k from 0 to infinity of (lambda^k e^-lambda / k!) times (q/p)^(z-k) if k &lt;= z, 1 if k &gt; z"><munderover><mo>&#8721;</mo><mrow><mi>k</mi><mo>=</mo><mn>0</mn></mrow><mi>&#8734;</mi></munderover><mfrac><mrow><msup><mi>&#955;</mi><mi>k</mi></msup><msup><mi>e</mi><mrow><mo>&#8722;</mo><mi>&#955;</mi></mrow></msup></mrow><mrow><mi>k</mi><mo>!</mo></mrow></mfrac><mo>&#8901;</mo><mrow><mo>{</mo><mtable columnalign="left left"><mtr><mtd><msup><mrow><mo>(</mo><mfrac><mi>q</mi><mi>p</mi></mfrac><mo>)</mo></mrow><mrow><mi>z</mi><mo>&#8722;</mo><mi>k</mi></mrow></msup></mtd><mtd><mtext>if&#160;</mtext><mi>k</mi><mo>&#8804;</mo><mi>z</mi></mtd></mtr><mtr><mtd><mn>1</mn></mtd><mtd><mtext>if&#160;</mtext><mi>k</mi><mo>&gt;</mo><mi>z</mi></mtd></mtr></mtable></mrow></math></div><p>Rearranging to avoid summing the infinite tail of the distribution...</p><div class="wp-eq"><math display="block" alttext="1 - sum for k from 0 to z of (lambda^k e^-lambda / k!) times (1 - (q/p)^(z-k))"><mn>1</mn><mo>&#8722;</mo><munderover><mo>&#8721;</mo><mrow><mi>k</mi><mo>=</mo><mn>0</mn></mrow><mi>z</mi></munderover><mfrac><mrow><msup><mi>&#955;</mi><mi>k</mi></msup><msup><mi>e</mi><mrow><mo>&#8722;</mo><mi>&#955;</mi></mrow></msup></mrow><mrow><mi>k</mi><mo>!</mo></mrow></mfrac><mrow><mo>(</mo><mn>1</mn><mo>&#8722;</mo><msup><mrow><mo>(</mo><mfrac><mi>q</mi><mi>p</mi></mfrac><mo>)</mo></mrow><mrow><mi>z</mi><mo>&#8722;</mo><mi>k</mi></mrow></msup><mo>)</mo></mrow></math></div><p>Converting to C code...</p><pre class="wp-pre"><code>#include &lt;math.h&gt;
+double AttackerSuccessProbability(double q, int z)
+{
+    double p = 1.0 - q;
+    double lambda = z * (q / p);
+    double sum = 1.0;
+    int i, k;
+    for (k = 0; k &lt;= z; k++)
+    {
+        double poisson = exp(-lambda);
+        for (i = 1; i &lt;= k; i++)
+            poisson *= lambda / i;
+        sum -= poisson * (1 - pow(q / p, z - k));
+    }
+    return sum;
+}</code></pre><p>Running some results, we can see the probability drop off exponentially with z.</p><pre class="wp-pre"><code>q=0.1
+z=0    P=1.0000000
+z=1    P=0.2045873
+z=2    P=0.0509779
+z=3    P=0.0131722
+z=4    P=0.0034552
+z=5    P=0.0009137
+z=6    P=0.0002428
+z=7    P=0.0000647
+z=8    P=0.0000173
+z=9    P=0.0000046
+z=10   P=0.0000012</code></pre><pre class="wp-pre"><code>q=0.3
+z=0    P=1.0000000
+z=5    P=0.1773523
+z=10   P=0.0416605
+z=15   P=0.0101008
+z=20   P=0.0024804
+z=25   P=0.0006132
+z=30   P=0.0001522
+z=35   P=0.0000379
+z=40   P=0.0000095
+z=45   P=0.0000024
+z=50   P=0.0000006</code></pre><p>Solving for P less than 0.1%...</p><pre class="wp-pre"><code>P &lt; 0.001
+q=0.10   z=5
+q=0.15   z=8
+q=0.20   z=11
+q=0.25   z=15
+q=0.30   z=24
+q=0.35   z=41
+q=0.40   z=89
+q=0.45   z=340</code></pre></section><section class="wp-sec" id="section-12"><h2>12. Conclusion</h2><p>We have proposed a system for electronic transactions without relying on trust. We started with the usual framework of coins made from digital signatures, which provides strong control of ownership, but is incomplete without a way to prevent double-spending. To solve this, we proposed a peer-to-peer network using proof-of-work to record a public history of transactions that quickly becomes computationally impractical for an attacker to change if honest nodes control a majority of CPU power. The network is robust in its unstructured simplicity. Nodes work all at once with little coordination. They do not need to be identified, since messages are not routed to any particular place and only need to be delivered on a best effort basis. Nodes can leave and rejoin the network at will, accepting the proof-of-work chain as proof of what happened while they were gone. They vote with their CPU power, expressing their acceptance of valid blocks by working on extending them and rejecting invalid blocks by refusing to work on them. Any needed rules and incentives can be enforced with this consensus mechanism.</p></section><section class="wp-sec" id="references"><h2>References</h2><ol class="wp-refs"><li id="ref-1"><span class="wp-ref-n">[1]</span> W. Dai, &quot;b-money,&quot; <a href="http://www.weidai.com/bmoney.txt" rel="noopener">http://www.weidai.com/bmoney.txt</a>, 1998.</li><li id="ref-2"><span class="wp-ref-n">[2]</span> H. Massias, X.S. Avila, and J.-J. Quisquater, &quot;Design of a secure timestamping service with minimal trust requirements,&quot; In 20th Symposium on Information Theory in the Benelux, May 1999.</li><li id="ref-3"><span class="wp-ref-n">[3]</span> S. Haber, W.S. Stornetta, &quot;How to time-stamp a digital document,&quot; In Journal of Cryptology, vol 3, no 2, pages 99-111, 1991.</li><li id="ref-4"><span class="wp-ref-n">[4]</span> D. Bayer, S. Haber, W.S. Stornetta, &quot;Improving the efficiency and reliability of digital time-stamping,&quot; In Sequences II: Methods in Communication, Security and Computer Science, pages 329-334, 1993.</li><li id="ref-5"><span class="wp-ref-n">[5]</span> S. Haber, W.S. Stornetta, &quot;Secure names for bit-strings,&quot; In Proceedings of the 4th ACM Conference on Computer and Communications Security, pages 28-35, April 1997.</li><li id="ref-6"><span class="wp-ref-n">[6]</span> A. Back, &quot;Hashcash - a denial of service counter-measure,&quot; <a href="http://www.hashcash.org/papers/hashcash.pdf" rel="noopener">http://www.hashcash.org/papers/hashcash.pdf</a>, 2002.</li><li id="ref-7"><span class="wp-ref-n">[7]</span> R.C. Merkle, &quot;Protocols for public key cryptosystems,&quot; In Proc. 1980 Symposium on Security and Privacy, IEEE Computer Society, pages 122-133, April 1980.</li><li id="ref-8"><span class="wp-ref-n">[8]</span> W. Feller, &quot;An introduction to probability theory and its applications,&quot; 1957.</li></ol></section><p class="wp-pl">Reading in Polish? There is a Polish reading version of the paper at <a href="https://dwadziesciajeden.pl/bitcoin-whitepaper/" rel="noopener">dwadziesciajeden.pl</a> (translation by <a href="https://github.com/meeDamian/bitcoinwhitepaper" rel="noopener">meeDamian</a>).</p>
+</div>
+</article>
+</main>
+<footer class="thanks">
+  <div class="say">
+    <span class="big">Thank you, Satoshi.</span>
+    <span class="line">Many copies, no single keeper: the spirit of decentralization.</span>
+  </div>
+  <div class="meta">
+    <a href="/bitcoin.pdf" download>Original PDF</a>
+    <a class="home" href="/">Bitcoin Shipshow</a>
+  </div>
+</footer>
+<script data-goatcounter="https://bitcoinshipshow.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

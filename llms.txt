@@ -23,6 +23,7 @@ Wallets, Lightning hubs, hardware signers, Nostr clients and relays, music and m
 - [What is Bitcoin Shipshow, and the questions people ask](https://bitcoinship.show/about/): the schedule, the format, how to get in, and the FAQ. The FAQ lives only on this page.
 - [The next expedition](https://bitcoinship.show/live/): countdown and line-up.
 - [The front page](https://bitcoinship.show/): email sign-up for the invite.
+- [The Bitcoin white paper](https://bitcoinship.show/bitcoin-whitepaper/): Satoshi Nakamoto's 2008 paper in full, with the original PDF at https://bitcoinship.show/bitcoin.pdf.
 - [Brand kit](https://bitcoinship.show/assets/): logos, colours, type, posters and copy blocks, free to use when talking about the show.
 - [Partner one-pager](https://bitcoinship.show/sponsors/): sponsorship, for partners only.
 - [The mini-game](https://bitcoinship.show/game/): a browser game using the show's art.
